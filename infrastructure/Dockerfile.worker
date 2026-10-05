@@ -1,0 +1,11 @@
+FROM python:3.12-slim-bookworm
+RUN apt-get update && apt-get install -y --no-install-recommends libgl1 libglib2.0-0 && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY local/requirements*.txt ./local/
+RUN pip install --no-cache-dir torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu && pip install --no-cache-dir -r local/requirements.txt -r local/requirements-ml.txt -r local/requirements-stack.txt
+COPY local ./local
+RUN useradd -m -u 1000 sentinel
+USER sentinel
+ENV HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 HF_HOME=/tmp/huggingface SENTINEL_MODEL_DIR=/models PYTHONUNBUFFERED=1 YOLO_CONFIG_DIR=/tmp/ultralytics
+EXPOSE 8768
+CMD ["uvicorn","local.ml.service:app","--host","0.0.0.0","--port","8768"]

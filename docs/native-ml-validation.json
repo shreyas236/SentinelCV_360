@@ -1,0 +1,56 @@
+{
+  "results": [
+    {
+      "model": "resnet18",
+      "task": "CLASSIFICATION",
+      "passed": true
+    },
+    {
+      "model": "convnext_tiny",
+      "task": "CLASSIFICATION",
+      "passed": true
+    },
+    {
+      "model": "dinov2-small",
+      "task": "EMBEDDING",
+      "passed": true
+    },
+    {
+      "model": "openclip-vit-b32",
+      "task": "CLASSIFICATION",
+      "passed": true
+    },
+    {
+      "model": "yolo11n",
+      "task": "DETECTION",
+      "passed": true
+    },
+    {
+      "model": "rtdetr-r18",
+      "task": "DETECTION",
+      "passed": true
+    },
+    {
+      "model": "mask2former-small",
+      "task": "SEGMENTATION",
+      "passed": true
+    },
+    {
+      "model": "onnx",
+      "task": "CLASSIFICATION",
+      "passed": true
+    },
+    {
+      "model": "torchscript",
+      "task": "CLASSIFICATION",
+      "passed": true
+    },
+    {
+      "native_inference_provenance": true,
+      "replay_detected": true,
+      "tampering_detected": true,
+      "embedding_scan_executed": true
+    }
+  ],
+  "scope": "CPU execution; synthetic image inputs; not field detection accuracy or production certification"
+}

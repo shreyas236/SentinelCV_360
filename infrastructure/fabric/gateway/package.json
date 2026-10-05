@@ -1,0 +1,4 @@
+{
+ "name":"sentinel-fabric-gateway","version":"1.0.0","private":true,"type":"module",
+ "dependencies":{"@grpc/grpc-js":"1.14.0","@hyperledger/fabric-gateway":"1.8.0"}
+}

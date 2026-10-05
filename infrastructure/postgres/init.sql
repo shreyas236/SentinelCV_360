@@ -1,0 +1,16 @@
+CREATE EXTENSION IF NOT EXISTS vector;
+CREATE EXTENSION IF NOT EXISTS timescaledb;
+CREATE SCHEMA IF NOT EXISTS keycloak;
+CREATE TABLE IF NOT EXISTS entities(id TEXT PRIMARY KEY,kind TEXT NOT NULL,data TEXT NOT NULL,created TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS idx_entities_kind_created ON entities(kind,created);
+CREATE TABLE IF NOT EXISTS graph_edges(source TEXT NOT NULL,target TEXT NOT NULL,relation TEXT NOT NULL,PRIMARY KEY(source,target,relation));
+CREATE INDEX IF NOT EXISTS idx_graph_edges_target ON graph_edges(target);
+CREATE TABLE IF NOT EXISTS audit_events(id BIGSERIAL PRIMARY KEY,previous TEXT NOT NULL UNIQUE,hash TEXT NOT NULL,payload TEXT NOT NULL,signature TEXT NOT NULL,key_id TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS replay_nonces(nonce TEXT PRIMARY KEY,sensor TEXT NOT NULL,sequence BIGINT NOT NULL,record_id TEXT NOT NULL,UNIQUE(sensor,sequence));
+CREATE TABLE IF NOT EXISTS key_store(id TEXT PRIMARY KEY,public_key TEXT NOT NULL,encrypted TEXT NOT NULL,certificate TEXT NOT NULL,status TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS stream_heads(sensor TEXT PRIMARY KEY,sequence BIGINT NOT NULL,hash TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS ml_embeddings(asset_id TEXT NOT NULL,model_id TEXT NOT NULL,embedding vector(384) NOT NULL,PRIMARY KEY(asset_id,model_id));
+CREATE INDEX IF NOT EXISTS idx_embeddings_cosine ON ml_embeddings USING hnsw(embedding vector_cosine_ops);
+CREATE TABLE IF NOT EXISTS monitoring_metrics(time TIMESTAMPTZ NOT NULL,category TEXT NOT NULL,metric TEXT NOT NULL,value DOUBLE PRECISION NOT NULL);
+SELECT create_hypertable('monitoring_metrics','time',if_not_exists => TRUE);
+CREATE INDEX IF NOT EXISTS idx_monitoring_category_metric ON monitoring_metrics(category,metric,time DESC);

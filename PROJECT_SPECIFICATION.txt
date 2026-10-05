@@ -1,0 +1,4089 @@
+# SENTINELCV 360
+## Complete End-to-End Offline Computer Vision Trust, Integrity, Assurance and Forensics Platform
+
+### Smart India Hackathon Problem Statement
+**SIH26228: Trustworthy CV Integrity Assurance for Data, Models and Inference Outputs**
+
+---
+
+# 1. PRIMARY PROJECT OBJECTIVE
+
+Build a complete, production-oriented, market-ready and SIH-demo-ready platform called:
+
+# SentinelCV 360
+
+SentinelCV 360 must provide **end-to-end trust assurance for the complete Computer Vision lifecycle**.
+
+The project must not be a collection of:
+
+- disconnected notebooks
+- static dashboards
+- hardcoded UI demonstrations
+- mock analysis results
+- randomly generated risk scores
+- fake benchmark numbers
+- pre-written alerts
+- simulated security findings without backend logic
+
+The project must work as a genuinely integrated security system.
+
+The following entire flow must genuinely work offline:
+
+```text
+Contributor
+      ↓
+Dataset Submission
+      ↓
+Secure Dataset Ingestion
+      ↓
+Dataset Integrity Analysis
+      ↓
+Poisoning / Label / Trigger / Duplicate / OOD Detection
+      ↓
+Contributor Risk Assessment
+      ↓
+Dataset Acceptance / Review / Quarantine
+      ↓
+Model Submission
+      ↓
+Secure Model Sandbox
+      ↓
+Model Identity Verification
+      ↓
+White/Grey/Black Box Assessment
+      ↓
+Behavioral Fingerprinting
+      ↓
+Backdoor / Model Integrity Analysis
+      ↓
+Inference Execution
+      ↓
+Cryptographic Provenance Generation
+      ↓
+Inference Verification
+      ↓
+Tampering / Replay Detection
+      ↓
+Distribution Shift Analysis
+      ↓
+Operational Drift vs Suspicious Manipulation
+      ↓
+Evidence Generation
+      ↓
+Confidence Calibration
+      ↓
+Risk Assessment
+      ↓
+CV Trust Graph
+      ↓
+Blast Radius Analysis
+      ↓
+Analyst Investigation
+      ↓
+Supervisor Approval
+      ↓
+ACCEPT / REVIEW / QUARANTINE
+      ↓
+Tamper-Evident Audit
+      ↓
+Signed Assurance Report
+      ↓
+Verifiable Evidence Package
+```
+
+If this complete flow genuinely works offline, SentinelCV 360 will be a strong technical interpretation of what SIH26228 is asking teams to build.
+
+Therefore, **working end-to-end integration takes priority over merely showing many features in the UI**.
+
+---
+
+# 2. CRITICAL IMPLEMENTATION RULE
+
+Every visible feature in the user interface must connect to actual backend functionality.
+
+For example:
+
+If the UI displays:
+
+```text
+Possible Trigger Injection
+Confidence: 91%
+```
+
+then the system must have:
+
+```text
+Input Dataset
+      ↓
+Actual Detector
+      ↓
+Detector Results
+      ↓
+Evidence Builder
+      ↓
+Confidence Calibration
+      ↓
+Finding Database Record
+      ↓
+UI
+```
+
+Do not directly hardcode:
+
+```python
+confidence = 0.91
+```
+
+Do not create fake findings for normal project operation.
+
+Demo seed data may be provided, but it must pass through the same real analysis pipeline.
+
+---
+
+# 3. SYSTEM PHILOSOPHY
+
+SentinelCV must implement:
+
+# Evidence-Driven Zero-Trust CV Assurance
+
+The system must never trust an asset simply because it exists inside the platform.
+
+Every important asset must be:
+
+```text
+Identified
+        ↓
+Hashed
+        ↓
+Registered
+        ↓
+Attributed
+        ↓
+Analyzed
+        ↓
+Linked
+        ↓
+Verified
+        ↓
+Audited
+```
+
+The major question SentinelCV answers is:
+
+> Can this Computer Vision dataset, model, environment, inference result and its complete lineage be trusted, and what measurable evidence supports that decision?
+
+---
+
+# 4. CORE DIFFERENTIATOR
+
+The centre of SentinelCV must be:
+
+# Evidence-Driven CV Trust Graph
+
+Do not design Dataset Security, Model Security and Inference Security as unrelated modules.
+
+Connect them.
+
+Example:
+
+```text
+ORGANIZATION
+     ↓
+CONTRIBUTOR
+     ↓
+SUBMISSION
+     ↓
+DATASET
+     ↓
+DATASET VERSION
+     ↓
+BATCH
+     ↓
+IMAGE
+     ↓
+ANNOTATION
+     ↓
+MODEL
+     ↓
+MODEL VERSION
+     ↓
+PREPROCESSING
+     ↓
+INFERENCE CONFIG
+     ↓
+SENSOR INPUT
+     ↓
+INFERENCE
+     ↓
+OUTPUT
+     ↓
+EVIDENCE
+     ↓
+FINDING
+     ↓
+FORENSIC CASE
+     ↓
+ASSURANCE DECISION
+     ↓
+REPORT
+```
+
+The system must support traversing these relationships both directions.
+
+Example:
+
+```text
+Contributor C
+      ↓
+Batch 21
+      ↓
+83 suspicious samples
+      ↓
+Dataset DS-004
+      ↓
+Models MOD-07 and MOD-09
+      ↓
+1,327 affected inferences
+      ↓
+28 operational outputs
+```
+
+This must be shown through a **Blast Radius Engine**.
+
+---
+
+# 5. USERS AND ROLES
+
+Implement six roles.
+
+## 5.1 Administrator
+
+Administrator handles platform management.
+
+Admin navigation:
+
+```text
+Dashboard
+Users
+Roles
+Organizations
+Contributors
+Sensors
+Devices
+Datasets
+Models
+Reference Vault
+Policies
+Keys
+Certificates
+System Builds
+SBOM
+Updates
+Backups
+Monitoring
+Audit
+Hyperledger
+Configuration
+```
+
+Admin dashboard must show real system values retrieved from backend services.
+
+Example:
+
+```text
+Users                      28
+Active Sensors             19
+Datasets                   63
+Registered Models          17
+Open Findings              14
+Quarantined Assets          4
+Audit Ledger          VERIFIED
+Reference Vault       HEALTHY
+Root CA               HEALTHY
+Database              HEALTHY
+Storage                    67%
+GPU                        44%
+Air-Gap Status         SECURE
+```
+
+---
+
+# 6. SECURITY ANALYST
+
+Analyst is the primary SIH-facing user.
+
+Create a professional security operations interface.
+
+Navigation:
+
+```text
+Security Overview
+Dataset Integrity
+Contributor Intelligence
+Model Integrity
+Inference Integrity
+Distribution Shift
+Findings
+Evidence
+Trust Graph
+Blast Radius
+Forensic Cases
+Attack Lab
+Benchmark Center
+Coverage Matrix
+Reports
+```
+
+Analysts must be able to:
+
+```text
+Review findings
+Inspect evidence
+Open suspicious samples
+Compare trusted and suspicious models
+Verify signatures
+Verify inference lineage
+Inspect drift
+Trace upstream lineage
+Trace downstream impact
+Create forensic cases
+Add investigation notes
+Recommend disposition
+Generate reports
+Export evidence
+```
+
+---
+
+# 7. SUPERVISOR
+
+Critical actions require two-person governance.
+
+Example:
+
+```text
+CRITICAL MODEL FINDING
+
+Analyst Recommendation:
+QUARANTINE
+
+Analyst Approval:
+SIGNED
+
+Supervisor Approval:
+PENDING
+```
+
+Supervisor actions:
+
+```text
+Approve Quarantine
+Reject Quarantine
+Release Asset
+Approve Critical Policy Change
+Approve Key Revocation
+Approve Final Case Closure
+Sign Assurance Report
+```
+
+Critical dispositions must become final only after required approval.
+
+---
+
+# 8. OPERATOR / USER
+
+Operator sees only operational information necessary for decision-making.
+
+Example:
+
+```text
+CAM-07
+
+LIVE / RECORDED INPUT
+
+[TANK 96.4%]
+
+[TRUCK 82.1%]
+
+
+INPUT                VERIFIED
+
+SENSOR               VERIFIED
+
+MODEL                VERIFIED
+
+CONFIGURATION        VERIFIED
+
+RUNTIME              VERIFIED
+
+OUTPUT               VERIFIED
+
+ENVIRONMENT          NORMAL
+
+
+OVERALL ASSURANCE
+
+TRUSTED
+```
+
+The operator should not initially see advanced mathematical details.
+
+They may expand:
+
+```text
+View Technical Evidence
+```
+
+if authorized.
+
+---
+
+# 9. CONTRIBUTOR
+
+Contributors supply:
+
+```text
+Datasets
+Dataset Batches
+Annotations
+Models
+Metadata
+Source Declarations
+Digital Signatures
+```
+
+Contributor portal must support:
+
+```text
+Create Submission
+Upload Dataset
+Upload Model
+Provide Metadata
+Sign Submission
+Track Review Status
+See Findings Related to Submission
+Respond to Review Request
+```
+
+---
+
+# 10. AUDITOR
+
+Auditor is read-only.
+
+Allow access to:
+
+```text
+Audit History
+Case History
+Asset History
+Policy History
+Approval History
+Key History
+Reports
+Evidence Packages
+Ledger Proofs
+SBOM
+System Builds
+```
+
+Auditor must never modify operational state.
+
+---
+
+# 11. PRIMARY INPUT TYPES
+
+SentinelCV must accept:
+
+```text
+Datasets
+Models
+Inference Records
+Sensor Streams
+Images
+Videos
+Recorded Feeds
+Satellite Imagery
+Thermal Imagery
+Infrared Imagery
+Metadata
+Reference Assets
+```
+
+---
+
+# 12. PRIMARY SIH INPUTS
+
+Clearly classify these as the main assurance inputs:
+
+```text
+DATASET
++
+MODEL
++
+INFERENCE RECORD
+```
+
+Sensor sources feed these workflows but should not visually replace the actual SIH problem.
+
+---
+
+# 13. SENSOR INPUT LAYER
+
+Implement support for:
+
+```text
+CCTV
+IP Camera
+Drone
+Thermal Camera
+Infrared Camera
+Satellite Imagery
+Body Camera
+Local Uploaded Image
+Local Uploaded Video
+RTSP Feed
+Recorded Feed
+```
+
+Adapters:
+
+```text
+RTSP
+ONVIF
+Video File
+Image File
+MAVLink-compatible metadata adapter
+GeoTIFF
+NITF-style geospatial adapter
+```
+
+If real hardware is not available for the SIH demonstration, use **real software adapters plus sensor simulators**.
+
+Do not replace the architecture with mock-only sensor screens.
+
+---
+
+# 14. SENSOR REGISTRY
+
+Store:
+
+```text
+sensor_id
+device_id
+serial_number
+sensor_type
+vendor
+model
+firmware
+resolution
+frame_rate
+location_metadata
+organization
+certificate_id
+public_key
+registration_time
+last_seen
+status
+health
+trust_status
+```
+
+---
+
+# 15. SENSOR TRUST
+
+Implement:
+
+```text
+Sensor Identity
+      ↓
+Certificate Verification
+      ↓
+Certificate Chain Verification
+      ↓
+Timestamp Validation
+      ↓
+Stream Fingerprint
+      ↓
+Frame Sequence Validation
+      ↓
+Metadata Validation
+      ↓
+Trusted Input
+```
+
+Monitor:
+
+```text
+FPS
+Resolution
+Dropped Frames
+Timestamp Skew
+Firmware Version
+Stream Disconnect
+Identity Change
+Certificate Expiration
+Unexpected Sensor Replacement
+Bitrate
+Frame Order
+```
+
+---
+
+# 16. ROOT OF TRUST
+
+Build a complete root-of-trust layer.
+
+Architecture:
+
+```text
+OFFLINE ROOT CA
+       │
+       ├── Device CA
+       │       ↓
+       │    Sensors
+       │
+       ├── Model Authority
+       │       ↓
+       │    Models
+       │
+       └── Service CA
+               ↓
+            Services
+```
+
+Production supports:
+
+```text
+HSM
+TPM
+Hardware-backed key storage
+```
+
+Demo deployment supports:
+
+```text
+Local CA
+Software-backed secure keystore
+```
+
+The workflows must remain identical.
+
+---
+
+# 17. KEY MANAGEMENT
+
+Implement full key lifecycle.
+
+```text
+Generate
+    ↓
+Register
+    ↓
+Activate
+    ↓
+Use
+    ↓
+Rotate
+    ↓
+Expire
+    ↓
+Revoke
+    ↓
+Archive
+```
+
+Store:
+
+```text
+key_id
+owner_type
+owner_id
+algorithm
+public_key
+created_at
+activated_at
+expires_at
+status
+revoked_at
+revocation_reason
+```
+
+Private keys must never be exposed in normal UI/API responses.
+
+---
+
+# 18. REFERENCE VAULT
+
+Create a protected Reference Vault.
+
+Store:
+
+```text
+Trusted Dataset
+Trusted Dataset Version
+Trusted Model
+Trusted Model Hash
+Probe Battery
+Reference Embeddings
+Reference Distribution
+Trusted Preprocessing Configuration
+Trusted Inference Configuration
+Trusted Runtime
+Security Baselines
+```
+
+Every reference must be:
+
+```text
+Versioned
+Hashed
+Signed
+Approved
+Audited
+Immutable after approval
+```
+
+Example:
+
+```text
+REF-MODEL-004
+
+Model:
+vehicle_detector_v4.onnx
+
+SHA-256:
+...
+
+Signed By:
+MODEL-AUTHORITY
+
+Approval:
+VALID
+
+Status:
+TRUSTED
+```
+
+---
+
+# 19. SECURE ASSET INGESTION GATEWAY
+
+Every external object enters through Zero-Trust Ingestion.
+
+General flow:
+
+```text
+Submission
+    ↓
+Quarantine
+    ↓
+Size Validation
+    ↓
+Format Detection
+    ↓
+Content Validation
+    ↓
+Metadata Extraction
+    ↓
+Security Inspection
+    ↓
+Hash Generation
+    ↓
+Signature Verification
+    ↓
+Asset Registration
+    ↓
+Analysis
+```
+
+---
+
+# 20. DATASET ZIP SECURITY
+
+Protect against malicious archives.
+
+Pipeline:
+
+```text
+Archive Upload
+     ↓
+Archive Size Check
+     ↓
+MIME Validation
+     ↓
+Path Traversal Prevention
+     ↓
+Zip Bomb Detection
+     ↓
+Decompression Limit
+     ↓
+File Count Limit
+     ↓
+Allowed File Type Validation
+     ↓
+Image Validation
+     ↓
+Annotation Validation
+     ↓
+Safe Extraction
+```
+
+Detect/reject:
+
+```text
+../../ path traversal
+unexpected executable
+oversized archive
+decompression bomb
+corrupt image
+malformed annotation
+unsupported object
+```
+
+---
+
+# 21. DATASET FORMATS
+
+Fully support:
+
+```text
+YOLO
+COCO
+Pascal VOC
+ImageFolder
+JSON metadata
+CSV metadata
+```
+
+Core SIH formats must be:
+
+```text
+YOLO
+COCO
+```
+
+---
+
+# 22. CV TASK ADAPTER
+
+Support all three major tasks.
+
+```text
+                 TASK ADAPTER
+                      │
+       ┌──────────────┼──────────────┐
+       ▼              ▼              ▼
+ Classification    Detection     Segmentation
+       │              │              │
+       ▼              ▼              ▼
+ Class Adapter    Box Adapter      Mask Adapter
+       │              │              │
+       └──────────────┼──────────────┘
+                      ▼
+               Common Prediction Schema
+```
+
+---
+
+# 23. MODEL FORMATS
+
+Support:
+
+```text
+ONNX
+PyTorch state_dict
+PyTorch checkpoint
+TorchScript
+```
+
+Adapters:
+
+```text
+ONNXAdapter
+PyTorchAdapter
+TorchScriptAdapter
+```
+
+---
+
+# 24. SECURE MODEL INGESTION
+
+Never directly execute untrusted uploaded model files.
+
+Pipeline:
+
+```text
+Model Upload
+     ↓
+Quarantine
+     ↓
+File Identification
+     ↓
+Hash
+     ↓
+Signature
+     ↓
+Static Inspection
+     ↓
+Serialization Safety Check
+     ↓
+Sandbox
+     ↓
+Model Adapter
+     ↓
+Analysis
+```
+
+---
+
+# 25. MODEL SANDBOX
+
+Run untrusted model analysis inside isolated workers.
+
+Restrictions:
+
+```text
+Network             Disabled
+Filesystem          Restricted
+User                Non-root
+CPU                 Quota
+RAM                 Quota
+GPU                 Quota
+Processes           Limited
+Execution Time      Limited
+Temporary Storage   Limited
+Privileges          Restricted
+```
+
+Record sandbox events in the audit system.
+
+---
+
+# 26. BASELINE ASSURANCE MUST NOT RETRAIN THE MODEL
+
+This is a hard architectural requirement.
+
+Baseline model integrity analysis must work without retraining the supplied model.
+
+Allowed baseline techniques:
+
+```text
+Hash verification
+Signature verification
+Behavioral fingerprint
+Probe battery
+Metamorphic testing
+Parameter statistics
+Activation analysis
+Trigger reconstruction
+Reference comparison
+```
+
+Display:
+
+```text
+BASELINE ASSURANCE MODE
+
+Model Retraining Required:
+NO
+```
+
+If remediation/retraining is eventually introduced, it must be separate from baseline assurance.
+
+---
+
+# 27. ASSET REGISTRY
+
+Every important object receives a unique ID.
+
+Examples:
+
+```text
+ORG-001
+CONTRIB-004
+SENSOR-010
+DATASET-009
+DSVER-012
+BATCH-032
+IMG-002981
+ANNOT-004218
+MODEL-007
+MODVER-011
+CONFIG-021
+INF-10293
+OUTPUT-10293
+EV-00192
+FINDING-0091
+CASE-0032
+REPORT-0021
+KEY-010
+BUILD-004
+```
+
+Registry stores:
+
+```text
+identity
+type
+version
+hash
+signature
+source
+parent
+children
+created_at
+modified_at
+trust_state
+disposition
+```
+
+---
+
+# 28. DATASET INTEGRITY ENGINE
+
+Implement a modular detector architecture.
+
+Every detector must implement conceptually:
+
+```python
+scan(asset) -> Evidence[]
+```
+
+Dataset Security Engine contains:
+
+```text
+Structural Validator
+Exact Duplicate Detector
+Near Duplicate Detector
+Annotation Validator
+Label Integrity Detector
+Trigger Detector
+OOD Detector
+Contributor Risk Engine
+Dataset Risk Engine
+```
+
+---
+
+# 29. EXACT DUPLICATES
+
+Use deterministic SHA-256.
+
+```text
+Image
+  ↓
+SHA-256
+  ↓
+Hash Index
+  ↓
+Duplicate Group
+```
+
+Output:
+
+```text
+Group ID
+Images
+Datasets
+Batches
+Contributors
+Count
+```
+
+---
+
+# 30. NEAR DUPLICATES
+
+Use multi-stage analysis.
+
+Stage 1:
+
+```text
+pHash
+dHash
+```
+
+Stage 2:
+
+```text
+Image
+  ↓
+DINOv2
+  ↓
+Embedding
+  ↓
+FAISS / pgvector
+  ↓
+Nearest Neighbors
+```
+
+Stage 3:
+
+```text
+Cosine Similarity
+```
+
+Detect:
+
+```text
+resize
+crop
+compression
+color changes
+minor modifications
+duplicate flooding
+```
+
+---
+
+# 31. LABEL INTEGRITY
+
+Use several independent signals.
+
+```text
+Image
+ ├──────── Given Annotation
+ ├──────── Reference CV Model
+ ├──────── OpenCLIP
+ └──────── DINOv2 Neighborhood
+                 ↓
+             Consensus
+                 ↓
+         Label Anomaly Evidence
+```
+
+Output:
+
+```text
+Provided class
+Reference class
+Semantic agreement
+Neighbor agreement
+Risk
+Confidence
+Evidence
+```
+
+Use wording such as:
+
+```text
+Possible Label Anomaly
+Possible Systematic Mislabeling
+Label/Reference Disagreement
+```
+
+Do not claim malicious intent without supporting evidence.
+
+---
+
+# 32. TRIGGER / POISONING DETECTION
+
+Create an ensemble.
+
+```text
+Dataset
+  │
+  ├── Recurring Patch Analysis
+  ├── Local Region Similarity
+  ├── Frequency Domain Analysis
+  ├── Saliency Concentration
+  ├── DINOv2 Clustering
+  ├── Contributor Concentration
+  └── Class-specific Behavior
+               ↓
+          Evidence Fusion
+               ↓
+       Trigger-like Finding
+```
+
+Show:
+
+```text
+Affected Samples
+Common Region
+Region Similarity
+Contributor
+Affected Classes
+Confidence
+Evidence Strength
+```
+
+---
+
+# 33. OOD ENGINE
+
+Use:
+
+```text
+DINOv2 embeddings
+KNN distance
+Mahalanobis distance
+Embedding clustering
+Energy statistics where applicable
+```
+
+Output:
+
+```text
+OOD Score
+Nearest Trusted Samples
+Distance
+Cluster
+Likely Explanation
+Confidence
+```
+
+---
+
+# 34. CONTRIBUTOR INTELLIGENCE
+
+Aggregate:
+
+```text
+Sample
+   ↓
+Batch
+   ↓
+Dataset
+   ↓
+Contributor
+```
+
+Example:
+
+```text
+CONTRIBUTOR C
+
+Total Samples              3,000
+Duplicate Anomalies          317
+Label Anomalies              148
+Trigger Suspects              83
+OOD Samples                  102
+
+Affected Models                2
+Potentially Affected
+Inferences                12,471
+
+Risk:
+HIGH
+
+Recommendation:
+QUARANTINE
+```
+
+---
+
+# 35. MODEL ACCESS DETECTOR
+
+Automatically classify model access:
+
+```text
+WHITE BOX
+GREY BOX
+BLACK BOX
+```
+
+Generate a test plan based on access.
+
+---
+
+# 36. WHITE-BOX MODEL ANALYSIS
+
+Implement:
+
+```text
+Hash Verification
+Signature Verification
+Architecture Inspection
+Parameter Statistics
+Layer Statistics
+Activation Clustering
+Spectral Signature Analysis
+Neuron Activation Profiling
+Trigger Reconstruction
+Neural Cleanse-style Testing
+Behavioral Fingerprinting
+Probe Battery
+```
+
+---
+
+# 37. GREY-BOX MODEL ANALYSIS
+
+Run:
+
+```text
+Hash
+Signature
+Architecture where visible
+Intermediate outputs where accessible
+Probe battery
+Behavioral fingerprint
+Metamorphic testing
+Output distribution
+```
+
+---
+
+# 38. BLACK-BOX MODEL ANALYSIS
+
+Run:
+
+```text
+Reference Probe Battery
+Behavioral Fingerprinting
+Metamorphic Testing
+Transformation Consistency
+Confidence Distribution Analysis
+Trigger Sensitivity
+Output Comparison
+Input Perturbation Testing
+```
+
+Never pretend unavailable white-box checks ran.
+
+---
+
+# 39. ASSESSMENT COVERAGE
+
+Every model report must show:
+
+```text
+Hash                    AVAILABLE
+Behavioral Fingerprint  AVAILABLE
+Probe Battery           AVAILABLE
+Metamorphic Test        AVAILABLE
+Weight Analysis         UNAVAILABLE
+Activation Analysis     UNAVAILABLE
+
+Assessment Coverage:
+67%
+```
+
+Coverage must affect confidence.
+
+---
+
+# 40. MODEL IDENTITY
+
+Compare:
+
+```text
+Expected Model Digest
+         ↓
+         X / ✓
+Candidate Model Digest
+```
+
+If mismatched:
+
+```text
+MODEL IDENTITY FAILURE
+
+Expected Hash:
+...
+
+Received Hash:
+...
+
+Disposition:
+QUARANTINE
+```
+
+This is deterministic evidence.
+
+---
+
+# 41. BEHAVIORAL FINGERPRINT
+
+Reference Probe Battery should contain:
+
+```text
+Normal Images
+Rare Classes
+Low Light
+Fog
+Blur
+Noise
+Compression
+Rotation
+Scale
+Crop
+Color Shift
+Synthetic Trigger Inputs
+Adversarial-like Inputs
+```
+
+Compare:
+
+```text
+Reference Model Outputs
+          vs
+Candidate Model Outputs
+```
+
+Measure:
+
+```text
+Class Agreement
+Confidence Difference
+Prediction Distribution
+Transformation Consistency
+Failure Concentration
+```
+
+---
+
+# 42. METAMORPHIC TESTING
+
+Example:
+
+```text
+Original Image
+Tank = 96%
+
+Small Brightness Change
+Tank = 95%
+
+Minor Compression
+Tank = 94%
+```
+
+Normal.
+
+Suspicious:
+
+```text
+Original
+Tank = 96%
+
+Small localized patch
+Tank = 2%
+Truck = 96%
+```
+
+Create:
+
+```text
+TRIGGER-SENSITIVE BEHAVIOR
+```
+
+finding.
+
+---
+
+# 43. INFERENCE TRUST ENGINE
+
+Every inference generates a complete provenance manifest.
+
+Bind:
+
+```text
+Sensor ID
+Sensor Certificate
+Input Hash
+Model ID
+Model Hash
+Model Version
+Preprocessing Code Hash
+Preprocessing Config Hash
+Inference Config Hash
+Runtime Hash
+Container Hash
+Library Manifest Hash
+System Build ID
+Hardware Identifier
+Output Hash
+Timestamp
+Sequence Number
+Nonce
+Previous Record Hash
+```
+
+---
+
+# 44. CANONICAL MANIFEST
+
+Serialize the fields deterministically.
+
+Then:
+
+```text
+Canonical Manifest
+      ↓
+SHA-256
+      ↓
+Ed25519 Signature
+      ↓
+Signed Provenance Record
+```
+
+---
+
+# 45. INFERENCE VERIFICATION
+
+Check:
+
+```text
+Input Identity
+Sensor Identity
+Model Identity
+Preprocessing
+Inference Configuration
+Runtime
+Output
+Signature
+Certificate
+Timestamp
+Nonce
+Sequence
+Previous Hash
+```
+
+Possible results:
+
+```text
+VERIFIED
+INPUT MODIFIED
+MODEL SUBSTITUTED
+CONFIG MODIFIED
+RUNTIME MODIFIED
+OUTPUT MODIFIED
+SIGNATURE INVALID
+CERTIFICATE INVALID
+REPLAY DETECTED
+CHAIN BROKEN
+SEQUENCE INVALID
+```
+
+---
+
+# 46. ANTI-REPLAY
+
+Use:
+
+```text
+Nonce
++
+Sequence
++
+Timestamp
++
+Previous Record Hash
+```
+
+If reused:
+
+```text
+REPLAY DETECTED
+
+Nonce previously consumed
+
+Expected Sequence:
+418
+
+Received:
+392
+```
+
+---
+
+# 47. ENVIRONMENT PROVENANCE
+
+Record:
+
+```text
+OS Version
+Container Digest
+Python Version
+PyTorch Version
+ONNX Runtime Version
+CUDA Version
+GPU
+CPU Architecture
+Application Build
+Git Commit
+Preprocessing Code Version
+SBOM ID
+```
+
+This must allow SentinelCV to identify the exact runtime used for an output.
+
+---
+
+# 48. DISTRIBUTION SHIFT ENGINE
+
+Analyze:
+
+```text
+Brightness
+Contrast
+Blur
+Noise
+Resolution
+Compression
+Color
+Sensor Type
+Class Distribution
+DINOv2 Embedding Distribution
+Terrain Metadata
+Season Metadata
+Acquisition Conditions
+```
+
+Statistical analysis:
+
+```text
+MMD
+PSI
+KS test
+Mahalanobis distance
+KNN embedding distance
+distribution divergence
+```
+
+---
+
+# 49. DRIFT CAUSE ANALYSIS
+
+Create scenarios for:
+
+```text
+Day → Night
+Clear → Fog
+Camera A → Camera B
+Resolution change
+Compression
+Noise
+Blur
+Sensor replacement
+Trigger insertion
+Localized manipulation
+```
+
+Use interpretable local model:
+
+```text
+Gradient Boosted Trees
+```
+
+Output:
+
+```text
+Illumination Change      74%
+Sensor Change            13%
+Weather                   9%
+Suspicious Manipulation   4%
+```
+
+Show:
+
+```text
+LIKELY OPERATIONAL DRIFT
+```
+
+when appropriate.
+
+Do not classify every drift as an attack.
+
+---
+
+# 50. EVIDENCE ENGINE
+
+Every detector outputs a common Evidence Object.
+
+Required fields:
+
+```text
+evidence_id
+asset_id
+finding_type
+detector
+detector_version
+severity
+risk
+raw_score
+calibrated_confidence
+evidence_strength
+coverage
+supporting_metrics
+supporting_assets
+affected_assets
+source
+recommended_action
+limitations
+created_at
+```
+
+---
+
+# 51. FINDING EXAMPLE
+
+UI should display:
+
+```text
+POSSIBLE BACKDOOR-LIKE MODEL BEHAVIOR
+
+Asset:
+MODEL-007
+
+Severity:
+HIGH
+
+Risk:
+88%
+
+Confidence:
+91%
+
+Evidence Strength:
+STRONG
+
+Coverage:
+83%
+
+
+WHY FLAGGED
+
+• Behavioral fingerprint differs significantly.
+• 17 of 30 probe cases fail.
+• Trigger-sensitive response concentrated on vehicle class.
+• Candidate hash differs from reference.
+
+
+Potentially Affected:
+1,327 inference records
+
+
+Recommendation:
+QUARANTINE
+
+
+LIMITATION
+
+Evidence shows backdoor-like behavior but does not by itself prove attacker intent.
+```
+
+---
+
+# 52. CONFIDENCE CALIBRATION
+
+Do not equate raw anomaly scores with confidence.
+
+Pipeline:
+
+```text
+Raw Detector Score
+       ↓
+Held-out Validation Data
+       ↓
+Calibration
+       ↓
+Calibrated Confidence
+```
+
+Implement:
+
+```text
+Isotonic Regression
+or
+Platt Calibration
+```
+
+Measure calibration quality.
+
+---
+
+# 53. RISK ENGINE
+
+Combine:
+
+```text
+Deterministic Security Failures
++
+Calibrated Statistical Evidence
++
+Evidence Strength
++
+Assessment Coverage
++
+Asset Criticality
++
+Contributor Risk
++
+Policy
+```
+
+Hard failures override scores.
+
+Example:
+
+```python
+if signature_invalid:
+    QUARANTINE
+
+elif model_hash_mismatch:
+    QUARANTINE
+
+elif confirmed_replay:
+    QUARANTINE
+
+elif audit_chain_broken:
+    QUARANTINE
+```
+
+---
+
+# 54. AI RISK FUSION
+
+For non-deterministic signals use:
+
+```text
+Calibrated Logistic Regression
+or
+Gradient Boosted Trees
+```
+
+Use SHAP to explain contributions.
+
+Example:
+
+```text
+WHY HIGH RISK?
+
+Model Hash Failure         44%
+Behavior Deviation         22%
+Trigger Sensitivity        18%
+Contributor Risk           10%
+Other                       6%
+```
+
+Deterministic failures must still appear independently.
+
+---
+
+# 55. POLICY ENGINE
+
+Implement:
+
+```text
+STANDARD
+STRICT
+MISSION CRITICAL
+CUSTOM
+```
+
+Example mission-critical policy:
+
+```text
+Invalid Signature
+→ QUARANTINE
+
+Model Hash Mismatch
+→ QUARANTINE
+
+Replay
+→ QUARANTINE
+
+High Statistical Risk
+→ REVIEW
+
+Critical Release
+→ ANALYST + SUPERVISOR
+
+Low Coverage
+→ REVIEW
+
+Low Confidence
+→ MANUAL REVIEW
+```
+
+---
+
+# 56. CV TRUST GRAPH
+
+Graph nodes:
+
+```text
+Organization
+Contributor
+Submission
+Sensor
+Dataset
+Dataset Version
+Batch
+Image
+Annotation
+Model
+Model Version
+Reference
+Configuration
+Runtime
+Inference
+Output
+Evidence
+Finding
+Case
+Report
+User
+Key
+Certificate
+System Build
+```
+
+Edges:
+
+```text
+CONTRIBUTED_BY
+CAPTURED_BY
+CONTAINS
+DERIVED_FROM
+TRAINED_ON
+USES
+GENERATED_BY
+PRODUCED
+SIGNED_BY
+VERIFIED_BY
+AFFECTS
+SUPERSEDES
+QUARANTINED_BY
+APPROVED_BY
+```
+
+---
+
+# 57. TRUST GRAPH VISUALIZATION
+
+Create interactive graph using:
+
+```text
+React Flow
+or
+Cytoscape.js
+```
+
+Example:
+
+```text
+Contributor C
+    🔴
+     │
+     ▼
+Batch 21
+    🔴
+ ┌───┼───┐
+ ▼   ▼   ▼
+I1  I2  I3
+🔴  🔴  🔴
+ \   │   /
+  \  │  /
+  MODEL-7
+     🔴
+      │
+ ┌────┼────┐
+ ▼    ▼    ▼
+INF1 INF2 INF3
+🔴   🟡   🟢
+```
+
+Clicking a node displays:
+
+```text
+Identity
+Type
+Hash
+Signature
+Trust State
+Risk
+Confidence
+Source
+Parents
+Children
+Findings
+Cases
+Audit Events
+```
+
+---
+
+# 58. BLAST RADIUS ENGINE
+
+When a suspicious asset is selected:
+
+```text
+Starting Node
+     ↓
+Graph Traversal
+     ↓
+Dependency Resolution
+     ↓
+Affected Assets
+     ↓
+Impact Classification
+```
+
+Example:
+
+```text
+Contributor          1
+Batches              3
+Images              83
+Datasets             1
+Models               2
+Inference Records 1327
+Reports             17
+Operational Outputs 28
+```
+
+---
+
+# 59. FORENSIC CASE MANAGEMENT
+
+Allow finding → case conversion.
+
+Case:
+
+```text
+CASE-102
+
+Potential Model Compromise
+
+Severity:
+CRITICAL
+
+Status:
+OPEN
+
+Related Assets:
+MODEL-007
+DS-021
+BATCH-018
+
+Related Findings:
+F-091
+F-103
+
+Potentially Affected:
+1,327 inferences
+```
+
+Analyst can:
+
+```text
+Add Evidence
+Add Notes
+Add Assets
+Run Blast Radius
+View Timeline
+Recommend Action
+```
+
+---
+
+# 60. FORENSIC TIMELINE
+
+Automatically collect events.
+
+```text
+09:21 Dataset uploaded
+09:22 Hash registered
+09:25 Baseline scan complete
+10:42 Contributor C batch added
+10:46 Trigger-like finding created
+12:01 Model registered
+12:05 Model hash mismatch detected
+12:08 Behavioral scan completed
+12:15 Case created
+12:20 Blast radius calculated
+12:32 Quarantine recommended
+12:40 Supervisor approved
+```
+
+---
+
+# 61. ATTACK LAB
+
+Create a fully operational Attack Lab.
+
+Data attacks:
+
+```text
+Label Flipping
+Systematic Mislabeling
+Trigger Injection
+Duplicate Flooding
+OOD Injection
+```
+
+Model attacks:
+
+```text
+Model Substitution
+Model Weight Modification
+Backdoored Model
+Behavior Modification
+```
+
+Inference attacks:
+
+```text
+Input Modification
+Output Modification
+Config Modification
+Replay
+Record Deletion
+Record Reordering
+Signature Corruption
+```
+
+Environment attacks:
+
+```text
+Blur
+Noise
+Fog
+Illumination
+Compression
+Resolution
+Sensor Shift
+```
+
+---
+
+# 62. REPRODUCIBLE ATTACK CONFIGURATION
+
+Example:
+
+```text
+Attack:
+Trigger Injection
+
+Dataset:
+DS-021
+
+Contributor:
+C
+
+Poison Rate:
+5%
+
+Target Class:
+Tank
+
+Trigger:
+12 × 12
+
+Location:
+Bottom Right
+
+Seed:
+47321
+```
+
+Save:
+
+```text
+Attack ID
+Seed
+Parameters
+Source Asset
+Modified Asset
+Ground Truth
+Affected Samples
+Timestamp
+```
+
+---
+
+# 63. BENCHMARK CENTER
+
+Compare ground truth to SentinelCV findings.
+
+Metrics:
+
+```text
+Precision
+Recall
+F1
+AUROC where appropriate
+False Positive Rate
+False Negative Rate
+Detection Latency
+Memory
+CPU
+GPU
+```
+
+Never fabricate results.
+
+---
+
+# 64. ATTACK-STRENGTH TESTING
+
+Run at:
+
+```text
+1%
+2%
+5%
+10%
+20%
+```
+
+For triggers:
+
+```text
+4x4
+8x8
+12x12
+Fixed position
+Random position
+```
+
+Create charts:
+
+```text
+Detection Rate vs Attack Strength
+
+False Positive Rate vs Threshold
+
+Latency vs Dataset Size
+```
+
+---
+
+# 65. BASELINE COMPARISONS
+
+Compare SentinelCV detector approaches against simpler techniques.
+
+Example:
+
+```text
+Near Duplicate Detection
+
+pHash only
+vs
+Embedding only
+vs
+SentinelCV Fusion
+```
+
+Use measured results only.
+
+---
+
+# 66. FALSE-POSITIVE MANAGEMENT
+
+Group related findings.
+
+Instead of:
+
+```text
+83 separate trigger alerts
+```
+
+produce:
+
+```text
+POSSIBLE TRIGGER CAMPAIGN
+
+Affected Samples:
+83
+
+Contributor:
+C
+
+Batch:
+B21
+
+View Individual Evidence
+```
+
+Implement:
+
+```text
+Alert Deduplication
+Correlation
+Campaign Grouping
+Priority Ranking
+```
+
+---
+
+# 67. ASSURANCE COVERAGE MATRIX
+
+Provide dedicated UI.
+
+Examples:
+
+```text
+Label Flip               SUPPORTED
+Systematic Mislabeling   SUPPORTED
+Trigger Injection        SUPPORTED
+Duplicate Flooding       SUPPORTED
+OOD Injection            SUPPORTED
+Model Substitution       SUPPORTED
+Weight Modification      SUPPORTED
+Backdoor-like Behavior   SUPPORTED
+Input Modification       SUPPORTED
+Output Modification      SUPPORTED
+Config Modification      SUPPORTED
+Replay                   SUPPORTED
+Record Deletion          SUPPORTED
+Record Reordering        SUPPORTED
+Sensor Shift             SUPPORTED
+Operational Drift        SUPPORTED
+
+Unknown Attack:
+DETECTION NOT GUARANTEED
+```
+
+Every unsupported/partially supported condition must be declared.
+
+---
+
+# 68. TWO-PERSON APPROVAL
+
+For critical cases:
+
+```text
+Analyst
+   ↓
+Signed Recommendation
+   ↓
+Supervisor
+   ↓
+Signed Approval
+   ↓
+Final Disposition
+```
+
+Store both approvals and signatures.
+
+---
+
+# 69. FINAL DISPOSITIONS
+
+Use exactly:
+
+```text
+ACCEPT
+
+REVIEW
+
+QUARANTINE
+```
+
+Possible underlying asset states:
+
+```text
+UNASSESSED
+SCANNING
+TRUSTED
+REVIEW
+QUARANTINED
+REJECTED
+ARCHIVED
+```
+
+---
+
+# 70. AUDIT EVERYTHING
+
+Audit:
+
+```text
+Login
+Logout
+Upload
+Download
+Scan Start
+Scan Completion
+Finding Created
+Finding Dismissed
+Finding Reclassified
+Case Created
+Evidence Added
+Policy Modified
+Key Generated
+Key Rotated
+Key Revoked
+Quarantine
+Release
+Approval
+Report Generated
+Evidence Exported
+Update Installed
+Backup
+Restore
+```
+
+---
+
+# 71. TAMPER-EVIDENT AUDIT
+
+Use:
+
+```text
+Event
+  ↓
+Canonical Serialization
+  ↓
+SHA-256
+  ↓
+Previous Event Hash
+  ↓
+Hash Chain
+```
+
+Batch events into:
+
+```text
+Merkle Tree
+```
+
+Store signed Merkle roots.
+
+---
+
+# 72. HYPERLEDGER FABRIC
+
+Include fully in the product.
+
+Do not store large datasets/images on blockchain.
+
+Anchor:
+
+```text
+Merkle Roots
+Critical Case Closure
+Report Hashes
+Key Revocations
+Asset Attestations
+Critical Decisions
+```
+
+Demo:
+
+```text
+Local multi-container Fabric network
+```
+
+Production:
+
+```text
+Separate organization peers
+```
+
+---
+
+# 73. EVIDENCE PACKAGE
+
+Case export:
+
+```text
+CASE-102.sentinel
+│
+├── manifest.json
+├── report.pdf
+├── evidence.json
+├── findings.json
+├── graph.json
+├── timeline.json
+├── audit.json
+├── hashes.txt
+├── benchmark.json
+├── sbom.json
+├── assets/
+├── screenshots/
+└── signature.sig
+```
+
+---
+
+# 74. EVIDENCE PACKAGE VERIFIER
+
+Allow reimport.
+
+Verify:
+
+```text
+Manifest
+Evidence
+Report
+Audit
+Graph
+Hashes
+Signature
+Certificate
+```
+
+Result:
+
+```text
+PACKAGE INTEGRITY
+
+VALID
+```
+
+or clearly identify failed components.
+
+---
+
+# 75. SIGNED ASSURANCE REPORT
+
+Generate HTML/PDF containing:
+
+```text
+Executive Summary
+Asset Information
+Contributor
+Dataset Integrity
+Model Integrity
+Inference Integrity
+Distribution Shift
+Trust Graph
+Findings
+Evidence
+Confidence
+Evidence Strength
+Coverage
+Blast Radius
+Recommended Actions
+Analyst Decision
+Supervisor Approval
+Known Limitations
+Audit Verification
+Report Hash
+Digital Signature
+```
+
+Report itself must be hashed and signed.
+
+---
+
+# 76. SOFTWARE BILL OF MATERIALS
+
+Every SentinelCV build records:
+
+```text
+Application Version
+Git Commit
+Container Digests
+Python Version
+PyTorch Version
+ONNX Runtime
+OpenCV
+FastAPI
+Frontend Libraries
+Database Version
+Dependency Inventory
+Hashes
+```
+
+Generate:
+
+```text
+SBOM ID
+```
+
+Associate inference environment with the correct build/SBOM.
+
+---
+
+# 77. SIGNED OFFLINE UPDATE SYSTEM
+
+Workflow:
+
+```text
+Trusted Build Environment
+       ↓
+Create Update Package
+       ↓
+Generate SBOM
+       ↓
+Sign Package
+       ↓
+Controlled Media
+       ↓
+Air-Gap Import
+       ↓
+Malware Scan
+       ↓
+Hash Verify
+       ↓
+Signature Verify
+       ↓
+SBOM Verify
+       ↓
+Approval
+       ↓
+Install
+       ↓
+Audit
+```
+
+Invalid update:
+
+```text
+UPDATE REJECTED
+```
+
+---
+
+# 78. BACKUP AND DISASTER RECOVERY
+
+Backup:
+
+```text
+PostgreSQL
+MinIO
+Reference Vault
+Policies
+Audit Data
+Ledger Metadata
+Reports
+Certificate Metadata
+```
+
+Backups must be:
+
+```text
+Encrypted
+Hashed
+Signed
+Versioned
+```
+
+Restore workflow:
+
+```text
+Restore
+  ↓
+Database Integrity
+  ↓
+Object Integrity
+  ↓
+Audit Chain Verification
+  ↓
+Ledger Verification
+  ↓
+System Re-enable
+```
+
+---
+
+# 79. DATABASE ARCHITECTURE
+
+Use:
+
+```text
+PostgreSQL
++
+pgvector
++
+TimescaleDB
+```
+
+PostgreSQL handles:
+
+```text
+Application state
+Trust graph
+Findings
+Cases
+Policies
+Users
+Assets
+Metadata
+```
+
+pgvector handles:
+
+```text
+DINOv2 embeddings
+OpenCLIP embeddings
+Similarity queries
+```
+
+TimescaleDB handles:
+
+```text
+Sensor telemetry
+Monitoring metrics
+AI drift history
+Operational metrics
+```
+
+---
+
+# 80. OBJECT STORAGE
+
+Use local MinIO.
+
+Store:
+
+```text
+Datasets
+Images
+Videos
+Models
+Reference Assets
+Heatmaps
+Evidence Files
+Reports
+Evidence Packages
+Backups
+```
+
+---
+
+# 81. IMPORTANT DATABASE TABLES
+
+Create:
+
+```text
+organizations
+
+users
+roles
+permissions
+
+contributors
+submissions
+
+sensors
+sensor_certificates
+sensor_events
+
+datasets
+dataset_versions
+dataset_batches
+
+images
+annotations
+embeddings
+
+models
+model_versions
+model_fingerprints
+model_access_profiles
+
+reference_assets
+
+preprocessing_configs
+inference_configs
+runtime_profiles
+
+inference_runs
+inference_outputs
+provenance_manifests
+
+evidence
+findings
+
+risk_assessments
+confidence_calibrations
+
+policies
+
+forensic_cases
+case_assets
+case_findings
+case_notes
+case_approvals
+
+attack_experiments
+attack_assets
+
+benchmark_runs
+benchmark_metrics
+
+audit_events
+merkle_batches
+ledger_anchors
+
+keys
+certificates
+revocations
+
+reports
+evidence_packages
+
+system_builds
+sboms
+update_packages
+
+monitoring_events
+
+trust_graph_nodes
+trust_graph_edges
+```
+
+---
+
+# 82. AUTHENTICATION
+
+Use local Keycloak.
+
+Support:
+
+```text
+RBAC
+OIDC
+Password policy
+MFA
+Session expiration
+Account lockout
+Local LDAP/AD integration
+```
+
+No internet authentication dependency.
+
+---
+
+# 83. BACKEND
+
+Use:
+
+```text
+Python
+FastAPI
+Pydantic
+SQLAlchemy
+Alembic
+```
+
+Create services:
+
+```text
+Auth Service
+Asset Service
+Sensor Service
+Contributor Service
+Dataset Service
+Model Service
+Inference Service
+Reference Vault Service
+Trust Graph Service
+Evidence Service
+Risk Service
+Policy Service
+Attack Lab Service
+Benchmark Service
+Case Service
+Report Service
+Audit Service
+Key Service
+Monitoring Service
+Update Service
+Backup Service
+```
+
+---
+
+# 84. BACKGROUND PROCESSING
+
+Use local:
+
+```text
+Redis
++
+Celery
+```
+
+For:
+
+```text
+Dataset scans
+Embedding generation
+Model probes
+Backdoor analysis
+Large graph operations
+Blast radius
+Benchmarks
+Report generation
+Batch inference
+Evidence packaging
+```
+
+---
+
+# 85. FRONTEND
+
+Use:
+
+```text
+React
+TypeScript
+Tailwind CSS
+React Router
+TanStack Query
+Recharts or Plotly
+React Flow or Cytoscape.js
+```
+
+Build clearly separated role dashboards.
+
+---
+
+# 86. AI/MODEL MATRIX
+
+Use this implementation matrix.
+
+```text
+Object Detection
+→ YOLO adapter + RT-DETR adapter
+
+Classification
+→ ResNet / ConvNeXt adapter
+
+Segmentation
+→ Mask2Former or equivalent adapter
+
+Image Embeddings
+→ DINOv2
+
+Semantic Label Checking
+→ OpenCLIP
+
+Exact Duplicate
+→ SHA-256
+
+Near Duplicate
+→ pHash + DINOv2 + FAISS/pgvector
+
+OOD
+→ DINOv2 + KNN + Mahalanobis
+
+Distribution Shift
+→ DINOv2 + MMD + PSI + KS
+
+Drift Cause
+→ Gradient Boosted Trees
+
+Trigger Data Analysis
+→ Patch/Frequency/Embedding Ensemble
+
+Model Backdoor
+→ Neural Cleanse-style + STRIP-style + activation analysis
+
+White Box
+→ Activation Clustering + Spectral Signatures
+
+Black Box
+→ Probe Battery + Metamorphic Testing
+
+Risk Fusion
+→ Calibrated Logistic Regression or Gradient Boosted Trees
+
+Explanation
+→ SHAP
+
+Operational Monitoring
+→ Isolation Forest + EWMA + CUSUM
+
+Blast Radius
+→ Graph Traversal / Risk Propagation
+
+Cryptographic Identity
+→ SHA-256 + Ed25519
+```
+
+Do not require an online LLM.
+
+---
+
+# 87. MONITORING
+
+Implement four monitoring categories.
+
+## Infrastructure
+
+Monitor:
+
+```text
+CPU
+RAM
+GPU
+VRAM
+Disk
+Database
+MinIO
+Redis
+Workers
+API latency
+Container health
+Hyperledger
+Backup status
+```
+
+Use:
+
+```text
+Prometheus
+Grafana
+```
+
+local-only.
+
+## Security
+
+Monitor:
+
+```text
+Failed Login
+Privilege Change
+Invalid Signature
+Certificate Expiry
+Revocation
+Replay
+Audit Chain Failure
+Sandbox Violation
+Untrusted Model Upload
+Policy Change
+Unusual Export
+```
+
+## AI
+
+Monitor:
+
+```text
+OOD Rate
+Drift
+Class Distribution
+Confidence Distribution
+Trigger Alerts
+Dataset Anomaly Rate
+Contributor Risk
+Model Risk
+False Positive Rate
+Calibration Error
+Analysis Latency
+```
+
+## Sensor
+
+Monitor:
+
+```text
+Online Status
+Certificate
+FPS
+Resolution
+Frame Drop
+Clock Skew
+Bitrate
+Firmware
+Stream Identity
+Sensor Drift
+```
+
+---
+
+# 88. AIR-GAPPED OPERATION
+
+The complete workflow must run with internet disconnected.
+
+Absolutely no runtime dependence on:
+
+```text
+OpenAI
+Gemini
+AWS
+Azure
+GCP
+Cloud Vision API
+Cloud Database
+External Authentication
+Online CDN
+Remote Model Download
+```
+
+All:
+
+```text
+Models
+Frontend assets
+Python packages needed at runtime
+Database
+Authentication
+Cryptography
+Monitoring
+Ledger
+```
+
+must be available locally.
+
+---
+
+# 89. DEMO DEPLOYMENT
+
+Provide Docker Compose stack:
+
+```text
+frontend
+api
+worker
+redis
+postgres
+minio
+keycloak
+prometheus
+grafana
+fabric-peer-1
+fabric-peer-2
+fabric-orderer
+fabric-ca
+sensor-simulator
+```
+
+Provide one clear startup workflow.
+
+---
+
+# 90. MARKET DEPLOYMENT
+
+Architect for:
+
+```text
+Operator Workstation
+Analyst Workstation
+Admin Workstation
+Supervisor Workstation
+
+API Cluster
+AI Worker Nodes
+GPU Worker Nodes
+PostgreSQL
+MinIO
+Keycloak
+HSM
+Fabric Peers
+Monitoring
+Offline Update Station
+Backup Storage
+```
+
+inside a protected LAN.
+
+---
+
+# 91. MAIN ANALYST DASHBOARD
+
+Example:
+
+```text
+SENTINELCV 360                AIR-GAPPED ●
+
+OVERALL ASSURANCE
+
+84 / 100
+
+
+DATASET        MODEL       INFERENCE       DRIFT
+
+78%            91%         VERIFIED        MODERATE
+
+
+CRITICAL        2
+HIGH            7
+MEDIUM         18
+LOW            32
+
+
+ACTIVE INCIDENTS
+
+MODEL-007
+Model Identity Failure
+CRITICAL
+
+DS-021
+Possible Poisoning Campaign
+HIGH
+
+CAM-009
+Operational Shift
+MEDIUM
+```
+
+---
+
+# 92. DATASET INVESTIGATION UI
+
+Show:
+
+```text
+Image Grid
+Bounding Boxes
+Annotations
+Heatmaps
+Nearest Neighbors
+Duplicates
+Trigger Groups
+OOD Samples
+Contributor
+Batch
+Classes
+Risk
+Evidence
+```
+
+Filters:
+
+```text
+All
+Clean
+Suspicious
+Duplicate
+Label Anomaly
+Trigger Suspect
+OOD
+Contributor
+Batch
+Class
+```
+
+---
+
+# 93. MODEL INVESTIGATION UI
+
+Show:
+
+```text
+Reference Model
+Candidate Model
+
+Hash
+Signature
+Architecture
+Task
+Input
+Classes
+Parameter Count
+Behavior Agreement
+Probe Results
+Trigger Tests
+Activation Tests
+Assessment Coverage
+Risk
+Confidence
+Disposition
+```
+
+---
+
+# 94. INFERENCE UI
+
+Show chain:
+
+```text
+Sensor
+  ✓
+  ↓
+Input
+  ✓
+  ↓
+Model
+  ✓
+  ↓
+Preprocessing
+  ✓
+  ↓
+Configuration
+  ✓
+  ↓
+Runtime
+  ✓
+  ↓
+Inference
+  ✓
+  ↓
+Output
+  ✗
+
+OUTPUT MODIFICATION DETECTED
+```
+
+---
+
+# 95. DRIFT UI
+
+Show:
+
+```text
+Reference vs Current
+
+Brightness
+Contrast
+Blur
+Class Distribution
+Sensor Distribution
+Embedding Projection
+Shift Timeline
+Likely Causes
+Manipulation Evidence
+```
+
+---
+
+# 96. BENCHMARK UI
+
+Show actual results only:
+
+```text
+Attack                Precision Recall F1 FPR
+
+Label Flip               ...
+Trigger Injection        ...
+Duplicate Flood          ...
+OOD Injection            ...
+Model Substitution       ...
+Backdoor Behavior        ...
+```
+
+Charts:
+
+```text
+Detection vs Attack Strength
+False Positives vs Threshold
+Latency vs Dataset Size
+Calibration Curve
+```
+
+---
+
+# 97. PRODUCT DOCUMENTATION
+
+Repository must include:
+
+```text
+docs/
+│
+├── architecture.md
+├── threat-model.md
+├── setup-guide.md
+├── air-gap-guide.md
+├── security-model.md
+├── coverage-matrix.md
+├── assumptions.md
+├── limitations.md
+├── attack-lab.md
+├── benchmark-methodology.md
+├── key-management.md
+├── update-process.md
+├── disaster-recovery.md
+└── demo-guide.md
+```
+
+Schemas:
+
+```text
+schemas/
+├── evidence.schema.json
+├── assurance-report.schema.json
+├── provenance-manifest.schema.json
+└── evidence-package.schema.json
+```
+
+---
+
+# 98. CRITICAL THREAT MODEL
+
+Define threat actors:
+
+```text
+Malicious Contributor
+Compromised Model Vendor
+External Attacker
+Malicious Insider
+Compromised Sensor
+Compromised Update Source
+```
+
+Assets:
+
+```text
+Datasets
+Models
+Keys
+Reference Assets
+Inference Results
+Audit Logs
+Reports
+Policies
+Evidence
+```
+
+Trust boundaries must be represented in architecture documentation.
+
+---
+
+# 99. DECLARED LIMITATIONS
+
+SentinelCV must not claim universal attack detection.
+
+Declare limitations such as:
+
+```text
+Unknown attack detection not guaranteed
+
+Black-box analysis has limited coverage
+
+Some model analysis requires internal access
+
+Statistical anomaly does not prove malicious intent
+
+Compromised operating system below SentinelCV can violate assumptions
+
+Stolen protected private keys require separate incident response
+
+Hardware implants may be outside software-only detection capability
+```
+
+---
+
+# 100. SIH DEMONSTRATION
+
+The entire demonstration must operate using actual backend logic.
+
+## Demo A: Clean baseline
+
+Load clean dataset and model.
+
+Expected:
+
+```text
+Dataset:
+ACCEPT
+
+Model:
+ACCEPT
+
+Inference:
+VERIFIED
+```
+
+## Demo B: Dataset poisoning
+
+Attack Lab:
+
+```text
+Trigger Injection
+Contributor C
+Poison 5%
+```
+
+Run scan.
+
+Expected real output based on detector:
+
+```text
+Suspicious Samples Found
+
+Contributor Risk Increased
+
+Disposition:
+REVIEW / QUARANTINE
+```
+
+Open evidence.
+
+---
+
+# 101. BLAST RADIUS DEMO
+
+Open Trust Graph.
+
+Show actual graph-backed relationships:
+
+```text
+Contributor C
+     ↓
+Batch
+     ↓
+Dataset
+     ↓
+Model
+     ↓
+Inference
+```
+
+Run Blast Radius.
+
+Do not display fake counts.
+
+Counts must originate from the database graph.
+
+---
+
+# 102. MODEL SUBSTITUTION DEMO
+
+Replace trusted model with modified model.
+
+Verification must compute a new hash.
+
+Show:
+
+```text
+MODEL HASH MISMATCH
+
+Expected:
+...
+
+Received:
+...
+
+QUARANTINE
+```
+
+---
+
+# 103. BACKDOOR BEHAVIOR DEMO
+
+Execute Probe Battery.
+
+Display measured failures.
+
+Example:
+
+```text
+Probe Tests:
+30
+
+Abnormal:
+17
+
+Behavior Agreement:
+measured value
+```
+
+Do not hardcode.
+
+---
+
+# 104. VALID INFERENCE DEMO
+
+Run inference.
+
+Generate real manifest.
+
+Show:
+
+```text
+Input          VERIFIED
+Sensor         VERIFIED
+Model          VERIFIED
+Config         VERIFIED
+Runtime        VERIFIED
+Output         VERIFIED
+Signature      VERIFIED
+```
+
+---
+
+# 105. TAMPERING DEMO
+
+Modify the stored output or output artifact.
+
+Verification must calculate the hash again.
+
+Show:
+
+```text
+OUTPUT HASH MISMATCH
+
+TAMPERING DETECTED
+```
+
+---
+
+# 106. REPLAY DEMO
+
+Replay previous signed inference record.
+
+Anti-replay engine detects:
+
+```text
+Nonce Reuse
+
+Sequence Violation
+```
+
+---
+
+# 107. DISTRIBUTION SHIFT DEMO
+
+Change daytime imagery to fog/night imagery.
+
+Analysis should generate actual shift metrics.
+
+Display:
+
+```text
+Distribution Shift:
+HIGH
+
+Likely Cause:
+Operational Environment Change
+
+Manipulation Evidence:
+LOW
+
+Disposition:
+REVIEW
+```
+
+---
+
+# 108. FORENSIC CASE DEMO
+
+Turn finding into case.
+
+Show:
+
+```text
+Evidence
+Timeline
+Assets
+Trust Graph
+Blast Radius
+Analyst Recommendation
+Supervisor Approval
+```
+
+---
+
+# 109. EVIDENCE PACKAGE DEMO
+
+Export case.
+
+Re-import package.
+
+System recalculates hashes/signatures.
+
+Show:
+
+```text
+Manifest       VERIFIED
+Report         VERIFIED
+Evidence       VERIFIED
+Audit          VERIFIED
+Signature      VERIFIED
+
+PACKAGE VALID
+```
+
+---
+
+# 110. BENCHMARK DEMO
+
+Finish with actual metrics.
+
+Show:
+
+```text
+Precision
+Recall
+F1
+False Positive Rate
+Dataset Scan Time
+Model Scan Time
+Inference Verification Latency
+```
+
+All metrics must originate from real executed experiments.
+
+---
+
+# 111. DEMO RELIABILITY REQUIREMENT
+
+The SIH demonstration must not depend on:
+
+```text
+live internet
+external API
+remote model server
+third-party cloud
+random web service
+uncontrolled hardware
+```
+
+Provide local demo assets:
+
+```text
+Clean Dataset
+Poisoned Dataset
+Reference Model
+Modified Model
+Backdoored Model
+Day Dataset
+Fog/Night Dataset
+Recorded Camera Feed
+Recorded Drone Feed
+Attack Lab Configurations
+```
+
+All stored locally.
+
+---
+
+# 112. PROJECT ACCEPTANCE CRITERIA
+
+The project is not complete merely because every page exists.
+
+The project is complete only when the following vertical slice works genuinely:
+
+```text
+Contributor registration
+        ↓
+Dataset submission
+        ↓
+Dataset hashing
+        ↓
+Dataset parsing
+        ↓
+Integrity scan
+        ↓
+Finding creation
+        ↓
+Evidence creation
+        ↓
+Contributor risk
+        ↓
+Trust Graph
+        ↓
+Model registration
+        ↓
+Model hash verification
+        ↓
+Behavior analysis
+        ↓
+Inference execution
+        ↓
+Provenance generation
+        ↓
+Signature generation
+        ↓
+Verification
+        ↓
+Output tampering detection
+        ↓
+Replay detection
+        ↓
+Distribution shift
+        ↓
+Case investigation
+        ↓
+Blast radius
+        ↓
+Analyst decision
+        ↓
+Supervisor approval
+        ↓
+Audit
+        ↓
+Signed report
+        ↓
+Evidence package
+```
+
+Each arrow must represent actual application logic.
+
+---
+
+# 113. NO-FAKE-FEATURE RULE
+
+Do not mark any module as completed if it only has a UI.
+
+Use development status:
+
+```text
+NOT STARTED
+
+BACKEND IMPLEMENTED
+
+UI IMPLEMENTED
+
+INTEGRATED
+
+TESTED
+
+BENCHMARKED
+
+DEMO READY
+
+PRODUCTION READY
+```
+
+A feature is **Demo Ready** only when:
+
+```text
+Frontend works
+Backend works
+Database works
+Analysis works
+Evidence is generated
+Errors are handled
+Tests pass
+Offline operation passes
+```
+
+---
+
+# 114. DEVELOPMENT PRIORITY
+
+Build the project in this sequence.
+
+### Stage 1
+
+Foundation:
+
+```text
+PostgreSQL
+MinIO
+FastAPI
+React
+Authentication
+RBAC
+Asset Registry
+```
+
+### Stage 2
+
+Trust:
+
+```text
+Root CA
+Hashing
+Signatures
+Reference Vault
+Audit
+```
+
+### Stage 3
+
+Core dataset flow:
+
+```text
+YOLO
+COCO
+Dataset upload
+Duplicate analysis
+Near duplicate
+OOD
+Label analysis
+Contributor risk
+```
+
+### Stage 4
+
+Trust Graph:
+
+```text
+Nodes
+Edges
+Lineage
+Visualization
+Blast Radius
+```
+
+### Stage 5
+
+Model:
+
+```text
+Model upload
+Sandbox
+ONNX
+PyTorch
+TorchScript
+Hash verification
+Access detection
+Behavioral fingerprint
+Probe battery
+```
+
+### Stage 6
+
+Inference:
+
+```text
+CV execution
+Provenance manifest
+Signatures
+Verification
+Replay
+Tamper detection
+```
+
+### Stage 7
+
+Drift:
+
+```text
+Reference profiles
+Current profiles
+Statistical tests
+Drift causes
+Visualization
+```
+
+### Stage 8
+
+Evidence/Risk:
+
+```text
+Evidence schema
+Calibration
+Risk
+Policies
+Disposition
+```
+
+### Stage 9
+
+Attack Lab and Benchmarking.
+
+### Stage 10
+
+Forensic case management.
+
+### Stage 11
+
+Supervisor governance.
+
+### Stage 12
+
+Fabric ledger.
+
+### Stage 13
+
+Monitoring.
+
+### Stage 14
+
+SBOM, offline updates, backup/recovery.
+
+### Stage 15
+
+Complete offline SIH demo validation.
+
+---
+
+# 115. FINAL TEST
+
+Before calling the project finished:
+
+Disconnect internet access completely.
+
+Start SentinelCV locally.
+
+Then successfully perform:
+
+```text
+Login
+
+Upload Dataset
+
+Detect Dataset Attack
+
+Inspect Evidence
+
+Upload Model
+
+Detect Model Substitution
+
+Run Inference
+
+Verify Provenance
+
+Tamper Output
+
+Detect Tampering
+
+Replay Record
+
+Detect Replay
+
+Introduce Distribution Shift
+
+Detect Shift
+
+Open Trust Graph
+
+Calculate Blast Radius
+
+Create Case
+
+Approve Disposition
+
+Generate Signed Report
+
+Export Evidence Package
+
+Verify Evidence Package
+
+Open Benchmark Results
+
+Inspect Audit Ledger
+```
+
+Everything must continue working.
+
+---
+
+# 116. FINAL PRODUCT MESSAGE
+
+The completed system must clearly demonstrate this concept:
+
+```text
+Contributor
+     ↓
+Dataset
+     ↓
+Model
+     ↓
+Runtime
+     ↓
+Inference
+     ↓
+Output
+     ↓
+Evidence
+     ↓
+Trust Graph
+     ↓
+Blast Radius
+     ↓
+Forensics
+     ↓
+Cryptographic Audit
+     ↓
+Assurance Decision
+```
+
+The judges should not leave thinking:
+
+> SentinelCV is an object detector.
+
+or:
+
+> SentinelCV is a poisoning detector.
+
+or:
+
+> SentinelCV is a blockchain project.
+
+They should understand:
+
+> **SentinelCV 360 is an offline, evidence-driven Zero-Trust assurance and forensic platform that verifies the integrity of contributed Computer Vision datasets, models, runtime environments and inference outputs; detects poisoning, model compromise, provenance tampering and distribution shift; traces downstream impact through a CV Trust Graph; and produces cryptographically verifiable ACCEPT, REVIEW or QUARANTINE decisions.**
+
+Most importantly:
+
+> **The complete flow must genuinely work offline from contributor and dataset ingestion through model assurance, inference provenance, tampering detection, drift analysis, Trust Graph, blast-radius analysis, forensic investigation, governance, audit and signed assurance reporting.**
+
+That end-to-end working vertical slice is the core acceptance requirement for the project.

@@ -1,0 +1,13 @@
+import { createServer } from 'node:http';
+import { mkdir, readFile, readdir } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { database, objects } from './storage.ts';
+import { remoteStorage } from './remote-storage.ts';
+import { handle } from '../core/http.ts';
+const directory=resolve(process.env.SENTINEL_DATA_DIR??'local-data');await mkdir(directory,{recursive:true});
+const production=process.env.SENTINEL_STORAGE==='postgres';let DB:any,BUCKET:any;
+if(production){({DB,BUCKET}=remoteStorage(process.env.SENTINEL_STORAGE_SERVICE_URL??'http://127.0.0.1:8767',process.env.SENTINEL_SERVICE_TOKEN??''));}
+else{DB=database(directory+'/sentinel.sqlite');BUCKET=objects(directory+'/objects');for(const file of (await readdir('drizzle')).filter(f=>f.endsWith('.sql')).sort()){const sql=await readFile('drizzle/'+file,'utf8');DB.exec(sql.replaceAll('CREATE TABLE ', 'CREATE TABLE IF NOT EXISTS ').replaceAll('CREATE UNIQUE INDEX ', 'CREATE UNIQUE INDEX IF NOT EXISTS ').replaceAll('CREATE INDEX ','CREATE INDEX IF NOT EXISTS '));}}
+const env={DB,BUCKET,KEYSTORE_SECRET:process.env.KEYSTORE_SECRET??'',LOCAL_MODE:'1',AI_SERVICE_URL:process.env.SENTINEL_AI_URL,LEDGER_URL:process.env.SENTINEL_LEDGER_URL,SERVICE_TOKEN:process.env.SENTINEL_SERVICE_TOKEN,STORAGE_SERVICE_URL:production?process.env.SENTINEL_STORAGE_SERVICE_URL:undefined,STORAGE_PROFILE:production?'PostgreSQL / pgvector / TimescaleDB / MinIO':'SQLite / filesystem',AUTH_PROFILE:process.env.SENTINEL_AUTH_MODE==='keycloak'?'Keycloak OIDC':'Local password sessions'};
+if(!process.env.SENTINEL_INTERNAL_TOKEN)throw new Error('Internal service token missing');
+const server=createServer(async(req,res)=>{if(req.headers['x-internal-token']!==process.env.SENTINEL_INTERNAL_TOKEN){res.writeHead(403);res.end('Forbidden');return;}const chunks:Buffer[]=[];let length=0;for await(const c of req){length+=c.length;if(length>15*1024*1024){res.writeHead(413);res.end('Payload too large');return;}chunks.push(c);}const request=new Request('http://localhost'+req.url,{method:req.method,headers:req.headers as any,...(req.method!=='GET'?{body:Buffer.concat(chunks)}:{})});const response=await handle(request,env,{id:String(req.headers['x-sentinel-actor']??''),role:String(req.headers['x-sentinel-role']??''),contributor_id:req.headers['x-sentinel-contributor'] as string|undefined});res.writeHead(response.status,Object.fromEntries(response.headers.entries()));res.end(Buffer.from(await response.arrayBuffer()));});server.listen(Number(process.env.SENTINEL_ENGINE_PORT??8766),'127.0.0.1',()=>console.log('Sentinel analysis service ready'));

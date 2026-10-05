@@ -1,0 +1,7 @@
+// D1/R2-compatible interfaces over the private PostgreSQL/MinIO bridge.
+export function remoteStorage(url:string,token:string){
+ const send=async(path:string,payload:any)=>{const r=await fetch(url+path,{method:'POST',headers:{'content-type':'application/json','x-service-token':token},body:JSON.stringify(payload),signal:AbortSignal.timeout(30000)});const data:any=await r.json();if(!r.ok)throw new Error(data.error??'Production storage unavailable');return data;};
+ const DB={prepare(sql:string){let args:any[]=[];const statement={bind(...values:any[]){args=values;return statement;},first(){return send('/sql',{sql,args,mode:'first'});},all(){return send('/sql',{sql,args,mode:'all'});},run(){return send('/sql',{sql,args,mode:'run'});},get query(){return {sql,args,mode:'run'};}};return statement;},batch(statements:any[]){return send('/batch',{statements:statements.map(s=>s.query)});}};
+ const BUCKET={async put(key:string,value:any,options:any={}){await send('/objects/put',{key,bytes_b64:Buffer.from(typeof value==='string'?new TextEncoder().encode(value):value).toString('base64'),content_type:options.httpMetadata?.contentType});},async get(key:string){const r=await send('/objects/get',{key});if(!r.found)return null;const bytes=new Uint8Array(Buffer.from(r.bytes_b64,'base64'));return {body:bytes,arrayBuffer:async()=>bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength)};}};
+ return {DB,BUCKET};
+}

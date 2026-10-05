@@ -1,0 +1,48 @@
+{
+  "results": [
+    {
+      "format": "onnx",
+      "task": "CLASSIFICATION",
+      "passed": true
+    },
+    {
+      "format": "onnx",
+      "task": "DETECTION",
+      "passed": true
+    },
+    {
+      "format": "onnx",
+      "task": "SEGMENTATION",
+      "passed": true
+    },
+    {
+      "format": "onnx",
+      "task": "EMBEDDING",
+      "passed": true
+    },
+    {
+      "format": "torchscript",
+      "task": "CLASSIFICATION",
+      "passed": true
+    },
+    {
+      "format": "torchscript",
+      "task": "DETECTION",
+      "passed": true
+    },
+    {
+      "format": "torchscript",
+      "task": "SEGMENTATION",
+      "passed": true
+    },
+    {
+      "format": "torchscript",
+      "task": "EMBEDDING",
+      "passed": true
+    },
+    {
+      "uploaded_onnx_approval_assessment_signed_inference": true
+    }
+  ],
+  "scope": "CPU fixture execution and local API; explicit tensor contracts, not arbitrary architectures"
+}

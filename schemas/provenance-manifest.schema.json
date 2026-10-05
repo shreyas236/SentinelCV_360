@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "sensor_id",
+    "input_hash",
+    "model_id",
+    "model_hash",
+    "preprocessing_code_hash",
+    "preprocessing_config_hash",
+    "inference_config_hash",
+    "runtime_hash",
+    "output_hash",
+    "timestamp",
+    "sequence_number",
+    "nonce",
+    "previous_record_hash",
+    "system_build_id",
+    "unavailable_attestations"
+  ],
+  "properties": {
+    "input_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "model_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "preprocessing_code_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "preprocessing_config_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "inference_config_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "runtime_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "output_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "library_manifest_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sequence_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "container_hash": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "hardware_identifier": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "nonce": {
+      "type": "string"
+    },
+    "unavailable_attestations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

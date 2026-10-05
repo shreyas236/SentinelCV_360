@@ -1,0 +1,11 @@
+{
+  "keycloak_version": "26.4.7",
+  "real_oidc_code_pkce": "passed",
+  "signed_jwt_validation": "passed",
+  "admin_created_client": "passed",
+  "client_rbac": "passed",
+  "forged_role": "rejected",
+  "logout_redirect": "passed",
+  "mfa_enrollment": "Not exercised by this automated test",
+  "database": "Keycloak dev-file and application SQLite"
+}

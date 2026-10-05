@@ -1,0 +1,8 @@
+-r requirements.txt
+psycopg[binary]==3.2.10
+boto3==1.40.40
+celery==5.5.3
+redis==6.4.0
+cryptography==46.0.2
+psutil==7.1.0
+PyYAML==6.0.3

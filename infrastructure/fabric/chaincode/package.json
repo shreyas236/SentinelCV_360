@@ -1,0 +1,5 @@
+{
+  "name":"sentinel-anchor", "version":"1.0.0", "private":true,
+  "main":"index.cjs", "scripts":{"start":"fabric-chaincode-node server"},
+  "dependencies":{"fabric-contract-api":"2.5.8","fabric-shim":"2.5.8"}
+}

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: sentinelcv-360
+    runtime: docker
+    plan: starter            # free works for a demo, but data is wiped on every restart/deploy
+    dockerfilePath: ./infrastructure/Dockerfile.api
+    dockerContext: .
+    healthCheckPath: /api/docs
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: SENTINEL_DATA_DIR
+        value: /app/local-data
+    # Persistent storage (accounts, evidence, records). Requires a paid plan.
+    # disk:
+    #   name: sentinel-data
+    #   mountPath: /app/local-data
+    #   sizeGB: 1

@@ -1,0 +1,1 @@
+{"centroids":[[210,15,210],[55,100,190],[194,143,53]],"classes":["GREEN","BLUE","AMBER"],"description":"RGB centroid classifier for synthetic assurance tests; not a pretrained vision model.","format":"sentinel.feature-centroid.v1"}

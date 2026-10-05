@@ -1,0 +1,342 @@
+{
+  "id": "BUILD-1a07b523b188",
+  "source_digest": "1a07b523b18837bd2b1b29a195c62b5e416ebf87aad1af48f30e59cd667a4439",
+  "preprocessing_hash": "faee5a161fb76f1cd46cf4750f9e0d6dca0f88d5d6d2bb2051bc5309098889b9",
+  "sbom_sha256": "6a33849b4291fdc53475f45a9d82c68a89947a0654d0ab9b5608536f10413b09",
+  "sbom": {
+    "bomFormat": "CycloneDX",
+    "specVersion": "1.6",
+    "version": 1,
+    "metadata": {
+      "component": {
+        "type": "application",
+        "name": "SentinelCV 360",
+        "version": "1.1.0"
+      },
+      "properties": [
+        {
+          "name": "source_digest",
+          "value": "1a07b523b18837bd2b1b29a195c62b5e416ebf87aad1af48f30e59cd667a4439"
+        },
+        {
+          "name": "inventory_scope",
+          "value": "Installed direct JavaScript dependencies and declared pinned Python dependencies; no transitive/container SBOM claim."
+        }
+      ]
+    },
+    "components": [
+      {
+        "type": "library",
+        "name": "@base-ui/react",
+        "version": "1.7.0",
+        "purl": "pkg:npm/@base-ui/react@1.7.0"
+      },
+      {
+        "type": "library",
+        "name": "@hookform/resolvers",
+        "version": "5.7.1",
+        "purl": "pkg:npm/@hookform/resolvers@5.7.1"
+      },
+      {
+        "type": "library",
+        "name": "@shadcn/react",
+        "version": "0.3.0",
+        "purl": "pkg:npm/@shadcn/react@0.3.0"
+      },
+      {
+        "type": "library",
+        "name": "@xyflow/react",
+        "version": "12.12.0",
+        "purl": "pkg:npm/@xyflow/react@12.12.0"
+      },
+      {
+        "type": "library",
+        "name": "class-variance-authority",
+        "version": "0.7.1",
+        "purl": "pkg:npm/class-variance-authority@0.7.1"
+      },
+      {
+        "type": "library",
+        "name": "clsx",
+        "version": "2.1.1",
+        "purl": "pkg:npm/clsx@2.1.1"
+      },
+      {
+        "type": "library",
+        "name": "cmdk",
+        "version": "1.1.1",
+        "purl": "pkg:npm/cmdk@1.1.1"
+      },
+      {
+        "type": "library",
+        "name": "date-fns",
+        "version": "4.4.0",
+        "purl": "pkg:npm/date-fns@4.4.0"
+      },
+      {
+        "type": "library",
+        "name": "drizzle-orm",
+        "version": "0.45.2",
+        "purl": "pkg:npm/drizzle-orm@0.45.2"
+      },
+      {
+        "type": "library",
+        "name": "embla-carousel-react",
+        "version": "8.6.0",
+        "purl": "pkg:npm/embla-carousel-react@8.6.0"
+      },
+      {
+        "type": "library",
+        "name": "fflate",
+        "version": "0.8.3",
+        "purl": "pkg:npm/fflate@0.8.3"
+      },
+      {
+        "type": "library",
+        "name": "input-otp",
+        "version": "1.4.2",
+        "purl": "pkg:npm/input-otp@1.4.2"
+      },
+      {
+        "type": "library",
+        "name": "jpeg-js",
+        "version": "0.4.4",
+        "purl": "pkg:npm/jpeg-js@0.4.4"
+      },
+      {
+        "type": "library",
+        "name": "lucide-react",
+        "version": "1.31.0",
+        "purl": "pkg:npm/lucide-react@1.31.0"
+      },
+      {
+        "type": "library",
+        "name": "next",
+        "version": "16.3.4",
+        "purl": "pkg:npm/next@16.3.4"
+      },
+      {
+        "type": "library",
+        "name": "next-themes",
+        "version": "0.4.6",
+        "purl": "pkg:npm/next-themes@0.4.6"
+      },
+      {
+        "type": "library",
+        "name": "pdf-lib",
+        "version": "1.17.1",
+        "purl": "pkg:npm/pdf-lib@1.17.1"
+      },
+      {
+        "type": "library",
+        "name": "pngjs",
+        "version": "7.0.0",
+        "purl": "pkg:npm/pngjs@7.0.0"
+      },
+      {
+        "type": "library",
+        "name": "radix-ui",
+        "version": "1.6.7",
+        "purl": "pkg:npm/radix-ui@1.6.7"
+      },
+      {
+        "type": "library",
+        "name": "react",
+        "version": "19.2.6",
+        "purl": "pkg:npm/react@19.2.6"
+      },
+      {
+        "type": "library",
+        "name": "react-day-picker",
+        "version": "10.0.1",
+        "purl": "pkg:npm/react-day-picker@10.0.1"
+      },
+      {
+        "type": "library",
+        "name": "react-dom",
+        "version": "19.2.6",
+        "purl": "pkg:npm/react-dom@19.2.6"
+      },
+      {
+        "type": "library",
+        "name": "react-hook-form",
+        "version": "7.85.0",
+        "purl": "pkg:npm/react-hook-form@7.85.0"
+      },
+      {
+        "type": "library",
+        "name": "react-resizable-panels",
+        "version": "4.12.2",
+        "purl": "pkg:npm/react-resizable-panels@4.12.2"
+      },
+      {
+        "type": "library",
+        "name": "recharts",
+        "version": "3.8.0",
+        "purl": "pkg:npm/recharts@3.8.0"
+      },
+      {
+        "type": "library",
+        "name": "sonner",
+        "version": "2.0.8",
+        "purl": "pkg:npm/sonner@2.0.8"
+      },
+      {
+        "type": "library",
+        "name": "tailwind-merge",
+        "version": "3.6.0",
+        "purl": "pkg:npm/tailwind-merge@3.6.0"
+      },
+      {
+        "type": "library",
+        "name": "vaul",
+        "version": "1.1.2",
+        "purl": "pkg:npm/vaul@1.1.2"
+      },
+      {
+        "type": "library",
+        "name": "zod",
+        "version": "3.25.76",
+        "purl": "pkg:npm/zod@3.25.76"
+      },
+      {
+        "type": "library",
+        "name": "Pillow",
+        "version": "11.3.0",
+        "purl": "pkg:pypi/Pillow@11.3.0"
+      },
+      {
+        "type": "library",
+        "name": "PyYAML",
+        "version": "6.0.3",
+        "purl": "pkg:pypi/PyYAML@6.0.3"
+      },
+      {
+        "type": "library",
+        "name": "boto3",
+        "version": "1.40.40",
+        "purl": "pkg:pypi/boto3@1.40.40"
+      },
+      {
+        "type": "library",
+        "name": "celery",
+        "version": "5.5.3",
+        "purl": "pkg:pypi/celery@5.5.3"
+      },
+      {
+        "type": "library",
+        "name": "cryptography",
+        "version": "46.0.2",
+        "purl": "pkg:pypi/cryptography@46.0.2"
+      },
+      {
+        "type": "library",
+        "name": "fastapi",
+        "version": "0.128.0",
+        "purl": "pkg:pypi/fastapi@0.128.0"
+      },
+      {
+        "type": "library",
+        "name": "httpx",
+        "version": "0.28.1",
+        "purl": "pkg:pypi/httpx@0.28.1"
+      },
+      {
+        "type": "library",
+        "name": "huggingface-hub",
+        "version": "0.35.3",
+        "purl": "pkg:pypi/huggingface-hub@0.35.3"
+      },
+      {
+        "type": "library",
+        "name": "numpy",
+        "version": "2.2.6",
+        "purl": "pkg:pypi/numpy@2.2.6"
+      },
+      {
+        "type": "library",
+        "name": "onnx",
+        "version": "1.19.0",
+        "purl": "pkg:pypi/onnx@1.19.0"
+      },
+      {
+        "type": "library",
+        "name": "onnxruntime",
+        "version": "1.22.1",
+        "purl": "pkg:pypi/onnxruntime@1.22.1"
+      },
+      {
+        "type": "library",
+        "name": "open_clip_torch",
+        "version": "3.2.0",
+        "purl": "pkg:pypi/open_clip_torch@3.2.0"
+      },
+      {
+        "type": "library",
+        "name": "psutil",
+        "version": "7.1.0",
+        "purl": "pkg:pypi/psutil@7.1.0"
+      },
+      {
+        "type": "library",
+        "name": "psycopg",
+        "version": "3.2.10",
+        "purl": "pkg:pypi/psycopg@3.2.10"
+      },
+      {
+        "type": "library",
+        "name": "redis",
+        "version": "6.4.0",
+        "purl": "pkg:pypi/redis@6.4.0"
+      },
+      {
+        "type": "library",
+        "name": "safetensors",
+        "version": "0.6.2",
+        "purl": "pkg:pypi/safetensors@0.6.2"
+      },
+      {
+        "type": "library",
+        "name": "scikit-learn",
+        "version": "1.7.2",
+        "purl": "pkg:pypi/scikit-learn@1.7.2"
+      },
+      {
+        "type": "library",
+        "name": "scipy",
+        "version": "1.16.2",
+        "purl": "pkg:pypi/scipy@1.16.2"
+      },
+      {
+        "type": "library",
+        "name": "torch",
+        "version": "2.8.0",
+        "purl": "pkg:pypi/torch@2.8.0"
+      },
+      {
+        "type": "library",
+        "name": "torchvision",
+        "version": "0.23.0",
+        "purl": "pkg:pypi/torchvision@0.23.0"
+      },
+      {
+        "type": "library",
+        "name": "transformers",
+        "version": "4.57.1",
+        "purl": "pkg:pypi/transformers@4.57.1"
+      },
+      {
+        "type": "library",
+        "name": "ultralytics",
+        "version": "8.3.221",
+        "purl": "pkg:pypi/ultralytics@8.3.221"
+      },
+      {
+        "type": "library",
+        "name": "uvicorn",
+        "version": "0.40.0",
+        "purl": "pkg:pypi/uvicorn@0.40.0"
+      }
+    ]
+  }
+}

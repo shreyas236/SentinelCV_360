@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "id",
+    "asset_id",
+    "finding_type",
+    "detector",
+    "severity",
+    "risk",
+    "raw_score",
+    "calibrated_confidence",
+    "evidence_strength",
+    "coverage",
+    "supporting_metrics",
+    "supporting_assets",
+    "affected_assets",
+    "source",
+    "recommended_action",
+    "limitations",
+    "created_at"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "asset_id": {
+      "type": "string"
+    },
+    "finding_type": {
+      "type": "string"
+    },
+    "detector": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string"
+    },
+    "evidence_strength": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "risk": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "coverage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "calibrated_confidence": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "recommended_action": {
+      "enum": [
+        "ACCEPT",
+        "REVIEW",
+        "QUARANTINE"
+      ]
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "supporting_metrics": {
+      "type": "object"
+    },
+    "supporting_assets": {
+      "type": "array"
+    },
+    "affected_assets": {
+      "type": "array"
+    }
+  }
+}

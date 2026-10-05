@@ -1,0 +1,39 @@
+# Coverage matrix
+
+Statuses describe this release only. INTEGRATED does not mean production-ready or complete offline SIH acceptance.
+
+| Capability | Status | Scope |
+|---|---|---|
+| Username / password accounts | INTEGRATED | User, Client and Admin accounts with fixed server roles, admin provisioning, sessions, lockout and ownership checks. Hosted private platform access remains. |
+| SHA-256 identity | INTEGRATED | Recomputed artifact bytes and pretrained file-tree digests; changed or missing weights fail execution. |
+| Exact duplicates | INTEGRATED | Byte-identical image grouping. |
+| Near duplicates | INTEGRATED | dHash and local DINOv2 cosine similarity; bounded samples, no field-calibrated confidence. |
+| YOLO / COCO ingest | INTEGRATED | Bounded ZIP parsing and box validation, PNG/JPEG. |
+| Label anomalies | INTEGRATED | Test-card feature classifier plus local OpenCLIP class disagreement. Scores require review; no proven malicious intent. |
+| Trigger detection | INTEGRATED | Narrow 12×12 corner detector and finite native probe transforms. Arbitrary triggers are not covered. |
+| OOD analysis | INTEGRATED | RGB fixture distances and local DINOv2 KNN / Ledoit-Wolf Mahalanobis; approved dataset baseline required. |
+| Model substitution | INTEGRATED | Recomputed digest against a signed, administrator-pinned reference. |
+| Behavior probes | INTEGRATED | Native classification, detection, segmentation and embedding comparison across seven transforms. A finite battery cannot establish universal safety. |
+| ONNX / PyTorch / TorchScript | INTEGRATED | ONNX and TorchScript execute four explicit tensor contracts; safe PyTorch state dictionaries support ResNet18/50 and ConvNeXt-Tiny. Arbitrary Python modules and external ONNX data are rejected. |
+| DINOv2 / OpenCLIP / YOLO / RT-DETR | INTEGRATED | All four executed on CPU with prepared, digest-pinned local weights. No runtime downloads. Weights are supplied separately from the hosted Site. |
+| ResNet / ConvNeXt / Mask2Former | INTEGRATED | Pretrained classification and segmentation executed on CPU; local signed inference path tested. This is execution evidence, not field accuracy. |
+| Neural Cleanse / STRIP / activation clustering | BACKEND IMPLEMENTED | STRIP entropy, activation clustering/spectral scores and optional bounded gradient reconstruction. Reconstruction supports ≤20 classification targets; thresholds are uncalibrated. |
+| Signed inference provenance | INTEGRATED | Native output, model/input/config digests, adapter code, runtime and Ed25519 manifests. Container/hardware attestation remains unavailable. |
+| Tampering / replay | INTEGRATED | Recomputed artifacts, signature verification, unique nonce and stream sequence; native and fixture paths tested. |
+| Distribution shift | INTEGRATED | Pixel metrics and local DINOv2 embedding KS / PSI / MMD. Cause remains an interpretable heuristic. |
+| Calibration | INTEGRATED | Measured sigmoid calibration on independent synthetic corner-trigger runs; pretrained anomaly scores are uncalibrated. |
+| Risk / policies | INTEGRATED | Transparent threshold rules and hard failure overrides. Learned fusion and SHAP remain pending. |
+| Trust graph / blast radius | INTEGRATED | Stored dependency traversal. Training lineage is declared, not proven. |
+| Cases / two-person approval | INTEGRATED | Separate fixed-role identities and signed approval receipts; no hosted role switching. |
+| Signed PDF / evidence package | INTEGRATED | PDF and ZIP hashes, Ed25519 manifests and pinned workspace-key verification. |
+| Audit / Merkle roots | INTEGRATED | Hash chain, signed roots, recomputed anchored prefixes and optional external-ledger readback. External failures appear explicitly. |
+| Hyperledger Fabric | BACKEND IMPLEMENTED | Real Gateway submit/commit/query, two-organization contract and Ed25519 key pinning. Contract tests pass; live peer startup is blocked here by denied netlink access. Ubuntu network acceptance remains. |
+| Software keystore / key revocation | INTEGRATED | AES-GCM keys and custom attestations; local TLS CA generation. HSM/TPM custody and production organizational PKI remain pending. |
+| Keycloak OIDC / realm roles | INTEGRATED | Local authorization-code PKCE, signed JWT checks, admin-created clients, strict roles and logout. Native HTTPS sign-in test; PostgreSQL deployment acceptance remains. |
+| MFA / LDAP | BACKEND IMPLEMENTED | Keycloak accounts require OTP enrollment. Interactive MFA and LDAP federation have not been validated; no LDAP configuration is supplied. |
+| PostgreSQL / pgvector / Timescale / MinIO | BACKEND IMPLEMENTED | API adapters, atomic batches, vector storage/search, time-series tables and versioned objects are wired. Service-level container validation remains. |
+| Sensor adapters / video ingestion | NOT STARTED | Uploaded images work; RTSP, ONVIF, MAVLink, thermal, drone and continuous video adapters remain pending. |
+| Prometheus / Grafana / Celery | BACKEND IMPLEMENTED | Protected process/application metrics, provisioned dashboard and role-scoped Redis/Celery jobs. Full service integration has not run here. |
+| Offline preparation / startup | BACKEND IMPLEMENTED | Connected image/model preparation, separately trusted Ed25519 bundle verification, pull-never startup and isolated service network. Full disconnected Ubuntu test remains. |
+| Signed update / rollback / encrypted backups | NOT STARTED | Bundle authenticity checking is implemented; atomic application updates, rollback and verified encrypted restore are not. |
+| Unknown attacks | NOT STARTED | Detection is not guaranteed. No universal assurance or production-readiness claim. |

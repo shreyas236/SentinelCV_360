@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "case",
+    "findings",
+    "evidence",
+    "assets",
+    "graph",
+    "blast_radius",
+    "audit_verification",
+    "generated_at",
+    "limitations"
+  ],
+  "properties": {
+    "case": {
+      "type": "object"
+    },
+    "findings": {
+      "type": "array"
+    },
+    "evidence": {
+      "type": "array"
+    },
+    "assets": {
+      "type": "array"
+    },
+    "audit_verification": {
+      "type": "object"
+    },
+    "limitations": {
+      "type": "array"
+    }
+  }
+}

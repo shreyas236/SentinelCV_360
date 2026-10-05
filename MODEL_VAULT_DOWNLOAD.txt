@@ -1,0 +1,12 @@
+Pretrained model vault download
+
+Download all three model-vault parts into one folder. From the extracted project root, run:
+
+cat /path/to/downloads/SentinelCV_Pretrained_Model_Vault.zip.part00{1,2,3} > SentinelCV_Pretrained_Model_Vault.zip
+sha256sum SentinelCV_Pretrained_Model_Vault.zip
+unzip SentinelCV_Pretrained_Model_Vault.zip
+
+Expected combined ZIP SHA-256:
+edc1dc551c3fd602c38414b363528de1d4fb974fd3b3f49560b2f93efa0f10e9
+
+Then verify the signed vault using the README command and docs/model-vault-public.pem. The files are the same tested, signed weights; splitting only changes the download packaging.

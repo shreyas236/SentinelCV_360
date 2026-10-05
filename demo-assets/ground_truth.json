@@ -1,0 +1,12 @@
+{
+  "domain": "Synthetic RGB test-card images",
+  "seed": 1000,
+  "trigger_seed": 47321,
+  "trigger_samples": [
+    0,
+    1
+  ],
+  "trigger_size": 12,
+  "position": "bottom right",
+  "note": "No real camera, drone, defense or field imagery is represented."
+}
