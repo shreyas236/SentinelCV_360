@@ -1,73 +1,109 @@
-# SentinelCV 360 — integration release 1.1
+# 🛡️ SentinelCV 360
 
-A private assurance workspace with User, Client and Admin accounts, native local CV execution, signed inference records, dataset scans, cases and reports. The Ubuntu stack includes Keycloak OIDC, PostgreSQL/pgvector/TimescaleDB, MinIO, Redis/Celery, Prometheus/Grafana and a Hyperledger Fabric Gateway/contract.
+**Offline Computer Vision Trust, Integrity, Assurance and Forensics Platform**
 
-Seven pretrained engines and the native signed-inference path ran successfully on CPU. Keycloak HTTPS sign-in, account provisioning and role enforcement also passed. **The full container stack and live Fabric network have not passed acceptance here. This release does not complete every section of the original production specification.** See `docs/coverage-matrix.md`, `docs/validation.md` and `docs/production-acceptance.md`.
+Smart India Hackathon — **SIH26228: Trustworthy CV Integrity Assurance for Data, Models and Inference Outputs**
 
-## Accounts
+SentinelCV 360 covers the whole computer-vision lifecycle in one workspace: **datasets → models → inference outputs → evidence → signed reports**. It runs natively and offline, executes real pretrained models on CPU, and signs every inference record so tampering and replay can be detected.
 
-| Account type | Permissions |
+> **Team:** _<team name>_ · **SIH ID:** _<team id>_ · **Demo video:** _<link>_ · **Screenshots:** see [`docs/screenshots`](docs/screenshots)
+
+---
+
+## What it does
+
+| Stage | Capability |
 |---|---|
-| User | Investigations, assessments, evidence and analyst recommendations |
-| Client | Submissions and records linked to that client's contributor identity |
-| Admin | Accounts, policies and approval of reference datasets/models |
-| Supervisor | Separate approval of analyst recommendations |
-| Operator / Auditor | Operational inference / read-only audit access |
+| **Dataset integrity** | YOLO/COCO ingest, exact + near-duplicate detection (dHash, DINOv2), label anomalies (OpenCLIP), trigger/backdoor patch detection, OOD analysis (KNN, Ledoit-Wolf Mahalanobis) |
+| **Model integrity** | SHA-256 identity, signed reference pinning, substitution detection, behavior probes across seven transforms, ONNX / TorchScript / safe PyTorch adapters |
+| **Real pretrained engines** | DINOv2, OpenCLIP, YOLO11n, RT-DETR, Mask2Former, ResNet18, ConvNeXt-Tiny — run locally, digest-pinned, no runtime downloads |
+| **Inference assurance** | Ed25519-signed provenance (model/input/config digests, runtime versions), tampering and replay detection (nonce + stream sequence) |
+| **Operations** | Distribution-shift analysis (KS / PSI / MMD), confidence calibration, drift vs. manipulation, trust graph, blast-radius analysis |
+| **Governance** | Fixed server-side roles (User, Client, Admin, Supervisor, Operator, Auditor), analyst → supervisor approval, tamper-evident audit, signed assurance reports, verifiable evidence packages |
 
-The private Site first asks its owner to create an Admin username and password. Admin can then create User and Client accounts in Administration. The Site retains its existing private ChatGPT access gate. Selecting an account type never changes a stored account's permissions.
+## Architecture
 
-Local password setup creates separate accounts, including `user`, `client` and `admin`, and prints new passwords once. No shared default passwords are included. Keycloak stack accounts require OTP enrollment; passwords are generated in a private runtime file.
+```mermaid
+flowchart TD
+  UI["React workspace"] --> AUTH["Fixed-role authentication"]
+  AUTH --> ENG["Assurance engine (TypeScript)"]
+  ENG --> CV["Local CV worker (PyTorch / ONNX)"]
+  ENG --> DATA["Records and artifacts"]
+  ENG --> AUDIT["Signed provenance and audit"]
+  AUDIT --> LEDGER["Hyperledger Fabric Gateway"]
+  AUTH --> JOBS["Redis and Celery"]
+  JOBS --> ENG
+```
 
-## Lightweight Ubuntu profile
+FastAPI is the authenticated boundary and starts a private Node analysis engine. Native CV execution runs in a separate Python worker. The full stack adds Keycloak OIDC, PostgreSQL/pgvector/TimescaleDB, MinIO, Redis/Celery, Prometheus/Grafana and a Fabric contract. Details: [`docs/architecture.md`](docs/architecture.md), [`docs/security-model.md`](docs/security-model.md), [`docs/threat-model.md`](docs/threat-model.md).
 
-Use Node 24+, Python 3.11+ and pnpm. Installation needs connected preparation or preinstalled dependencies.
+## Tech stack
+
+React 19 · Vite · Tailwind · TypeScript engine (Node 24) · FastAPI · PyTorch · ONNX Runtime · Ultralytics · Transformers · OpenCLIP · SQLite / PostgreSQL · MinIO · Redis / Celery · Keycloak · Hyperledger Fabric · Docker Compose
+
+## Capability matrix (from [`FEATURE_STATUS.json`](FEATURE_STATUS.json))
+
+| Capability | Status | Scope and limits |
+|---|---|---|
+| Username / password accounts | INTEGRATED | User, Client and Admin accounts with fixed server roles, admin provisioning, sessions, lockout and ownership checks. Hosted private platform access remains. |
+| SHA-256 identity | INTEGRATED | Recomputed artifact bytes and pretrained file-tree digests; changed or missing weights fail execution. |
+| Exact duplicates | INTEGRATED | Byte-identical image grouping. |
+| Near duplicates | INTEGRATED | dHash and local DINOv2 cosine similarity; bounded samples, no field-calibrated confidence. |
+| YOLO / COCO ingest | INTEGRATED | Bounded ZIP parsing and box validation, PNG/JPEG. |
+| Label anomalies | INTEGRATED | Test-card feature classifier plus local OpenCLIP class disagreement. Scores require review; no proven malicious intent. |
+| Trigger detection | INTEGRATED | Narrow 12×12 corner detector and finite native probe transforms. Arbitrary triggers are not covered. |
+| OOD analysis | INTEGRATED | RGB fixture distances and local DINOv2 KNN / Ledoit-Wolf Mahalanobis; approved dataset baseline required. |
+| Model substitution | INTEGRATED | Recomputed digest against a signed, administrator-pinned reference. |
+| Behavior probes | INTEGRATED | Native classification, detection, segmentation and embedding comparison across seven transforms. A finite battery cannot establish universal safety. |
+| ONNX / PyTorch / TorchScript | INTEGRATED | ONNX and TorchScript execute four explicit tensor contracts; safe PyTorch state dictionaries support ResNet18/50 and ConvNeXt-Tiny. Arbitrary Python modules and external ONNX data are rejected. |
+| DINOv2 / OpenCLIP / YOLO / RT-DETR | INTEGRATED | All four executed on CPU with prepared, digest-pinned local weights. No runtime downloads. Weights are supplied separately from the hosted Site. |
+| ResNet / ConvNeXt / Mask2Former | INTEGRATED | Pretrained classification and segmentation executed on CPU; local signed inference path tested. This is execution evidence, not field accuracy. |
+| Neural Cleanse / STRIP / activation clustering | BACKEND IMPLEMENTED | STRIP entropy, activation clustering/spectral scores and optional bounded gradient reconstruction. Reconstruction supports ≤20 classification targets; thresholds are uncalibrated. |
+| Signed inference provenance | INTEGRATED | Native output, model/input/config digests, adapter code, runtime and Ed25519 manifests. Container/hardware attestation remains unavailable. |
+| Tampering / replay | INTEGRATED | Recomputed artifacts, signature verification, unique nonce and stream sequence; native and fixture paths tested. |
+| Distribution shift | INTEGRATED | Pixel metrics and local DINOv2 embedding KS / PSI / MMD. Cause remains an interpretable heuristic. |
+| Calibration | INTEGRATED | Measured sigmoid calibration on independent synthetic corner-trigger runs; pretrained anomaly scores are uncalibrated. |
+| Risk / policies | INTEGRATED | Transparent threshold rules and hard failure overrides. Learned fusion and SHAP remain pending. |
+| Trust graph / blast radius | INTEGRATED | Stored dependency traversal. Training lineage is declared, not proven. |
+| Cases / two-person approval | INTEGRATED | Separate fixed-role identities and signed approval receipts; no hosted role switching. |
+| Signed PDF / evidence package | INTEGRATED | PDF and ZIP hashes, Ed25519 manifests and pinned workspace-key verification. |
+| Audit / Merkle roots | INTEGRATED | Hash chain, signed roots, recomputed anchored prefixes and optional external-ledger readback. External failures appear explicitly. |
+| Hyperledger Fabric | BACKEND IMPLEMENTED | Real Gateway submit/commit/query, two-organization contract and Ed25519 key pinning. Contract tests pass; live peer startup is blocked here by denied netlink access. Ubuntu network acceptance remains. |
+| Software keystore / key revocation | INTEGRATED | AES-GCM keys and custom attestations; local TLS CA generation. HSM/TPM custody and production organizational PKI remain pending. |
+| Keycloak OIDC / realm roles | INTEGRATED | Local authorization-code PKCE, signed JWT checks, admin-created clients, strict roles and logout. Native HTTPS sign-in test; PostgreSQL deployment acceptance remains. |
+| MFA / LDAP | BACKEND IMPLEMENTED | Keycloak accounts require OTP enrollment. Interactive MFA and LDAP federation have not been validated; no LDAP configuration is supplied. |
+| PostgreSQL / pgvector / Timescale / MinIO | BACKEND IMPLEMENTED | API adapters, atomic batches, vector storage/search, time-series tables and versioned objects are wired. Service-level container validation remains. |
+| Sensor adapters / video ingestion | NOT STARTED | Uploaded images work; RTSP, ONVIF, MAVLink, thermal, drone and continuous video adapters remain pending. |
+| Prometheus / Grafana / Celery | BACKEND IMPLEMENTED | Protected process/application metrics, provisioned dashboard and role-scoped Redis/Celery jobs. Full service integration has not run here. |
+| Offline preparation / startup | BACKEND IMPLEMENTED | Connected image/model preparation, separately trusted Ed25519 bundle verification, pull-never startup and isolated service network. Full disconnected Ubuntu test remains. |
+| Signed update / rollback / encrypted backups | NOT STARTED | Bundle authenticity checking is implemented; atomic application updates, rollback and verified encrypted restore are not. |
+| Unknown attacks | NOT STARTED | Detection is not guaranteed. No universal assurance or production-readiness claim. |
+
+## Validation evidence
+
+- Seven pretrained engines and the signed native inference path ran successfully on CPU: [`docs/native-ml-validation.json`](docs/native-ml-validation.json), [`docs/portable-model-validation.json`](docs/portable-model-validation.json)
+- Keycloak HTTPS sign-in, account provisioning and role enforcement passed: [`docs/keycloak-validation.json`](docs/keycloak-validation.json)
+- Test suite: `npm test`, plus `tests/*_smoke.py`. See [`docs/validation.md`](docs/validation.md)
+
+## Honest status
+
+The full container stack and live Fabric network have **not** passed acceptance in this release, and not every section of the original specification is complete. Model scores are execution evidence, not field-validated probabilities. See [`docs/coverage-matrix.md`](docs/coverage-matrix.md), [`docs/limitations.md`](docs/limitations.md) and [`docs/production-acceptance.md`](docs/production-acceptance.md).
+
+## Run it
+
+Quick start, native ML profile and offline stack: [`docs/quickstart.md`](docs/quickstart.md) and [`docs/setup-guide.md`](docs/setup-guide.md).
 
 ```bash
 corepack pnpm install --frozen-lockfile
-python3 -m venv .venv
-source .venv/bin/activate
+python3 -m venv .venv && source .venv/bin/activate
 pip install -r local/requirements.txt
-python local/setup.py
+python local/setup.py            # prints admin/user/client passwords once
 npm run build:local
 uvicorn local.api:app --host 127.0.0.1 --port 8000
 ```
 
-Open http://127.0.0.1:8000. Sign in as User or Admin and choose **Initialize baseline** to run the synthetic assurance demonstration. Sign in separately as Supervisor for final case approval. Development UI: `npm run dev:local` at http://127.0.0.1:5173.
+Pretrained weights are distributed separately as a signed model vault (see [`MODEL_VAULT_DOWNLOAD.txt`](MODEL_VAULT_DOWNLOAD.txt)); verify with `docs/model-vault-public.pem`.
 
-## Native pretrained CV profile
+## Credits
 
-Extract `SentinelCV_Pretrained_Model_Vault.zip` into the project root. It supplies the `model-vault` directory with seven real pretrained engines, processor files and an inventory of SHA-256 hashes. Before using supplied media, verify its signature with the separately supplied project key:
-
-```bash
-pip install -r local/requirements-stack.txt
-python scripts/offline-bundle.py verify --directory model-vault --trusted-key docs/model-vault-public.pem
-pip install torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
-pip install -r local/requirements-ml.txt
-export SENTINEL_SERVICE_TOKEN="$(python -c 'import secrets; print(secrets.token_hex(32))')"
-export SENTINEL_AI_URL=http://127.0.0.1:8768
-export SENTINEL_MODEL_DIR="$PWD/model-vault"
-uvicorn local.ml.service:app --host 127.0.0.1 --port 8768 &
-uvicorn local.api:app --host 127.0.0.1 --port 8000
-```
-
-These installation commands run on the connected preparation workstation. Installed model execution refuses network requests and uses only local weights.
-
-In Administration, pin a reviewed dataset baseline and an installed pretrained model. Assess the model, then select an accepted model in Inference integrity. DINOv2 and OpenCLIP power embedding and label-anomaly scans; YOLO11n and RT-DETR produce detections; Mask2Former produces segmentation; ResNet18 and ConvNeXt-Tiny produce classifications. Model scores are not validated field assurance probabilities.
-
-For uploaded ONNX/TorchScript models, select their task, classes, input size and declared dataset. Admin must pin a reviewed uploaded model as a signed reference before assessment and operational execution. Supported tensor contracts and safe PyTorch architectures are documented in `docs/model-adapters.md`.
-
-## Full offline service stack
-
-`infrastructure/prepare-offline.sh` builds and saves images and prepares signed dependencies on a connected workstation with Docker. `infrastructure/start-offline.sh` verifies the separately trusted bundle, loads images and starts services without pulling or building. Follow `docs/setup-guide.md` for credentials, TLS, Fabric preparation and target-machine prerequisites. The downloadable model vault is supplied; the Docker image archive must still be built and tested on that workstation.
-
-## Validation
-
-```bash
-npm test
-python tests/local_api_smoke.py
-python tests/oidc_test.py
-python tests/portable_ml_smoke.py
-python tests/native_ml_smoke.py
-```
-
-The last two commands require ML dependencies; the final one also requires the supplied model vault. Native Keycloak/Fabric smoke harnesses are included with explicit distribution-path arguments. See their usage and the recorded JSON results under `docs`.
+_<List every contributor and mentor and what each did.>_
